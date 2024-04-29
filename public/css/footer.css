@@ -1,0 +1,17 @@
+
+/* footer */
+.footer {
+  color: #fff;
+}
+
+.footer a {
+  color: #fff;
+  text-decoration: none;
+}
+.footer li{
+  margin-bottom: 0.5rem;
+}
+
+.footer a:hover {
+  color: rgb(86, 86, 86);
+}

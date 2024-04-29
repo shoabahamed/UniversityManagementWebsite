@@ -1,0 +1,68 @@
+.welcome-section {
+  padding: 50px 0;
+  background-color: #e3f9e0; /* Light green background */
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.1);
+}
+.faculty-name {
+  font-size: 32px;
+  font-weight: bold;
+  color: #006400; /* Dark green text */
+  margin-bottom: 30px;
+}
+
+.names{
+  font-size: 26px;
+  font-weight: bold;
+  color: #006400; /* Dark green text */
+  margin-bottom: 30px;
+}
+
+
+.message {
+  padding: 30px;
+  background-color: #f8f9fa;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+.message img {
+  max-width: 150px;
+  height: auto;
+  border-radius: 50%;
+  margin-bottom: 20px;
+}
+.name {
+  font-size: 20px;
+  font-weight: bold;
+  color:  bvb#006400; /* Dark green text */
+  margin-bottom: 10px;
+}
+.designation {
+  font-style: italic;
+  color: #555;
+}
+
+
+
+.departments li {
+  margin-bottom: 5px;
+}
+
+.departments a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.departments a:hover {
+
+  color: #0056b3;
+}
+
+.departments a:active {
+  color: #0056b3;
+}
+
+.department-name {
+  color: #006400;
+  font-weight: bold;
+}

@@ -1,0 +1,177 @@
+/* hero section */
+.c-carousel-item {
+    height: 600px;
+}
+.c-carousel-img{
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+}
+
+/* faculties section */
+.course-col{
+    flex-basis: 31%;
+    border-radius: 10px;
+    margin-bottom: 5%;
+    padding: 20px 12px;
+    box-sizing: border-box;
+    transition: 0.2s;
+    cursor: pointer;
+}
+
+.course-col:hover{
+    background: #e3f9e0;;
+    transform: translateY(-5px);
+}
+
+
+/* event list */
+.announcement-content{
+	color: white;
+}
+
+.c-announcement{
+    background: #e3f9e0;
+    height: 50px;
+}
+
+.widgets-title{
+    color:#3ad625
+}
+
+.events-content ul{
+	padding: 0;
+    list-style: none;
+    margin-top: 2rem;
+}
+
+.events-content ul li{
+	color: black;
+	margin-bottom: 3rem;
+}
+
+.event-container{
+	display: flex;
+	align-items:center;
+}
+
+
+
+.event-container .date>span .day{
+	font-size: 1.5em;
+}
+
+.event-container .event-text{
+	margin-left: 1rem;
+}
+
+.event-container .date {
+    min-width: 90px;
+    border-right: 2px solid #006400;;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.event-container .date>span {
+    display: block;
+    border: 2px solid #006400;
+    border-radius: 100%;
+    padding: 0.5rem 2.5rem;
+    text-align: center;
+    width: 75px;
+    height: 75px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Horizontal centering */
+    align-items: center; /* Vertical centering */
+}
+
+/********** notice board **********/  
+
+
+.event-date {
+    text-align: center;
+    background: #006400;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+}
+
+.event-content {
+    margin-left: 1rem;
+    width: calc(100% - 120px);
+    text-decoration: underline;
+    font-style: italic;
+}
+
+.marquee-container {
+    overflow: hidden;
+    border: 1px solid #dee2e6;
+    border-radius: 5px;
+}
+
+marquee {
+    margin-top: 10px;
+}
+
+/* kuet info */
+.c-section-title{
+    color: #006400;
+    font-weight: bold; 
+}
+
+.card {
+    border: none;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+.card-title {
+    color: #333;
+}
+.card-text {
+    font-size: 24px;
+    font-weight: bold;
+}
+.card-info {
+    padding: 30px;
+}
+
+/* welcome */
+.welcome-section {
+    padding: 50px 0;
+    background-color: #e3f9e0; /* Light green background */
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+}
+.welcome-message {
+    font-size: 32px;
+    font-weight: bold;
+    color: #006400; /* Dark green text */
+    margin-bottom: 30px;
+}
+.vc-message {
+    padding: 30px;
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+.vc-message img {
+    max-width: 150px;
+    height: auto;
+    border-radius: 50%;
+    margin-bottom: 20px;
+}
+.vc-name {
+    font-size: 20px;
+    font-weight: bold;
+    color:  bvb#006400; /* Dark green text */
+    margin-bottom: 10px;
+}
+.vc-designation {
+    font-style: italic;
+    color: #555;
+}
+
+
+
