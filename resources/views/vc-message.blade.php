@@ -34,7 +34,7 @@
           .vc-name {
             font-size: 20px;
             font-weight: bold;
-            color:  bvb#006400; /* Dark green text */
+            color: #006400; /* Dark green text */
             margin-bottom: 0px;
           }
           .vc-designation {

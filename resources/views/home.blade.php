@@ -24,16 +24,20 @@
               <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
               <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
               <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+							<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 3"></button>
           </div>
           <div class="carousel-inner">
             <div class="carousel-item active c-carousel-item" data-bs-interval="10000">
-              <img src="./assets/carousel4.jpg" class="d-block w-100  c-carousel-img" alt="...">
+              <img src="./assets/0.jpg" class="d-block w-100  c-carousel-img" alt="...">
             </div>
             <div class="carousel-item c-carousel-item" data-bs-interval="2000">
-              <img src="./assets/carousel2.jpg" class="d-block w-100 c-carousel-img" alt="...">
+              <img src="./assets/3.jpg" class="d-block w-100 c-carousel-img" alt="...">
             </div>
             <div class="carousel-item c-carousel-item">
-              <img src="./assets/carousel3.jpg" class="d-block w-100 c-carousel-img" alt="...">
+              <img src="./assets/14.jpg" class="d-block w-100 c-carousel-img" alt="...">
+            </div>
+						<div class="carousel-item c-carousel-item">
+              <img src="./assets/10.jpg" class="d-block w-100 c-carousel-img" alt="...">
             </div>
           </div>
           <button class="carousel-control-prev" type="button" data-bs-target="#hero-section" data-bs-slide="prev">
@@ -44,7 +48,6 @@
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Next</span>
           </button>
-
       </div>
 	</header>
 	 {{-- welcome and vc message --}}
@@ -58,7 +61,7 @@
 														Khulna University of Engineering & Technology (KUET), Bangladesh established in 1967 as Khulna Engineering College, starts its long cherished journey in 3 June, 1974 after receiving special direction from the Father of the Nation Bangabandhu Sheikh Mujibur Rahman. Later to ensure the better academic and research capabilities and environment, it is converted to an autonomous institute called Bangladesh Institute of Technology (BIT), Khulna in July 1986. To meet the demands of the days in the academic and research arena, the institute was upgraded and renamed as Khulna University of Engineering & Technology (KUET) in September 2003.
 						</p>
 						<div>
-														<a href="./welcome" class="btn btn-outline-success">Read More</a>
+														<a href="{{route('welcome')}}" class="btn btn-outline-success">Read More</a>
 						</div>
 				</div>
 				<div class="col-md-4 mt-3">
@@ -71,7 +74,7 @@
 												"It feels me prodigious pleasure to write a few words about my best-loved Khulna University of Engineering & Technology (KUET), one of the few leading and promising Engineering Universities of Bangladesh, established in 1967 as Khulna Engineering College in a greenery landscape located about 12 km north away from the Khulna City centre.."
 										</p>
 										<div>
-												<a href="./vc-message" class="btn btn-outline-success">Read More</a>
+												<a href="{{route('vc-message')}}" class="btn btn-outline-success">Read More</a>
 										</div>
 								</div>
 						</div>
@@ -154,7 +157,7 @@
 										</li>
 								</ul>
 								<div class="d-flex justify-content-center">
-										<a href="#" class="btn btn-outline-success ">See More</a>
+										<a href="{{route('notice')}}" class="btn btn-outline-success ">See More</a>
 								</div>  
 						</div>
 				</div>
@@ -170,7 +173,7 @@
 																						<h4 class="mb-0">21</h4>
 																		</div>
 																		<div class="event-content text-wrap">
-																						<a href="#" class="text-decoration-none text-dark">The faculty of EEE of KUET successfully organized the 6th International Conference on Electrical Information and Community</a>
+																						<a href="./notice" class="text-decoration-none text-dark">The faculty of EEE of KUET successfully organized the 6th International Conference on Electrical Information and Community</a>
 																		</div>
 														</div>
 														<div class="d-flex align-items-center mb-3">
@@ -179,7 +182,7 @@
 																						<h4 class="mb-0">21</h4>
 																		</div>
 																		<div class="event-content text-wrap">
-																						<a href="#" class="text-decoration-none text-dark">"National Mourning Day 2023" observed at KUET</a>
+																						<a href="./notice" class="text-decoration-none text-dark">"National Mourning Day 2023" observed at KUET</a>
 																		</div>
 														</div>
 														<div class="d-flex align-items-center mb-3">
@@ -188,7 +191,7 @@
 																						<h4 class="mb-0">21</h4>
 																		</div>
 																		<div class="event-content text-wrap">
-																						<a href="#" class="text-decoration-none text-dark">Training on 'Practicing Outcome Based Education towards BAETE Accreditation' held at KUET</a>
+																						<a href="./notice" class="text-decoration-none text-dark">Training on 'Practicing Outcome Based Education towards BAETE Accreditation' held at KUET</a>
 																		</div>
 														</div>
 														<div class="d-flex align-items-center mb-3">
@@ -197,13 +200,13 @@
 																						<h4 class="mb-0">21</h4>
 																		</div>
 																		<div class="event-content text-wrap">
-																						<a href="#" class="text-decoration-none text-dark">Training on 'Practicing Outcome Based Education towards BAETE Accreditation' held at KUET</a>
+																						<a href="./notice" class="text-decoration-none text-dark">Training on 'Practicing Outcome Based Education towards BAETE Accreditation' held at KUET</a>
 																		</div>
 														</div>
 										</marquee>
 						</div>
 						<div class="d-flex justify-content-center mt-5">
-										<a href="#" class="btn btn-outline-success">See More</a>
+										<a href="{{route('notice')}}" class="btn btn-outline-success">See More</a>
 						</div>   
 				</div>		
 			</div>
@@ -214,22 +217,22 @@
     <h1 class="text-center" style="color: #006400;font-weight: bold;">Faculties</h1>
     <p class="text-center" style="font-style: italic">20 Departments in 3 faculties</p>
     <div class="row justify-content-around mt-5">
-        <div class="course-col col-12 col-sm-5 col-md-3 border border-success border-2"  onclick="window.location.href='./faculties'">
+        <div class="course-col col-12 col-sm-5 col-md-3 border border-success border-2"  onclick="window.location.href='{{route('faculties')}}'">
             <h4 class="text-center">Faculty of Civil Engineering</h4>
             <p class="pt-2">The Faculty of Civil Engineering, Khulna University of Engineering & Technology offers both the undergraduate and post-graduate degrees maintaining its long-standing reputation for excellence in education and research.....</p>
         </div>
-        <div class="course-col col-12 col-sm-5 col-md-3 border border-success border-2"  onclick="window.location.href='./faculties'">
+        <div class="course-col col-12 col-sm-5 col-md-3 border border-success border-2"  onclick="window.location.href='{{route('faculties')}}'">
             <h4 class="text-center">Faculty of Electrical Engineering</h4>
             <p class="pt-2">Faculty of Electrical and Electronic Engineering (EEE) at Khulna University of Engineering & Technology (KUET) offers unique opportunities for education, research and innovation to meet the increasing demand for highly educated....</p>
         </div>
-        <div class="course-col col-12 col-sm-5 col-md-3 border border-success border-2" onclick="window.location.href='./faculties'">
+        <div class="course-col col-12 col-sm-5 col-md-3 border border-success border-2" onclick="window.location.href='{{route('faculties')}}'">
             <h4 class="text-center">Faculty of Mechaical Engineering</h4>
             <p class="pt-2">The Faculty of Civil Engineering, Khulna University of Engineering & Technology offers both the undergraduate and post-graduate degrees maintaining its long-standing reputation for excellence in education and research....</p>
         </div>
     </div>
 	</section>
   {{-- kuet info --}}
-	<section class="container mt-4 mb-4">
+	<section class="container mt-4 mb-4" id="kuet-at-a-glance">
 		<h1 class="text-center c-section-title">Kuet At a Glance</h1>
     <div class="row mt-4">
         <div class="col-md-4 col-sm-6">

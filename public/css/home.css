@@ -20,7 +20,7 @@
 }
 
 .course-col:hover{
-    background: #e3f9e0;;
+    background: #e3f9e0;
     transform: translateY(-5px);
 }
 
@@ -67,7 +67,7 @@
 
 .event-container .date {
     min-width: 90px;
-    border-right: 2px solid #006400;;
+    border-right: 2px solid #006400;
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -165,7 +165,7 @@ marquee {
 .vc-name {
     font-size: 20px;
     font-weight: bold;
-    color:  bvb#006400; /* Dark green text */
+    color: #006400; /* Dark green text */
     margin-bottom: 10px;
 }
 .vc-designation {

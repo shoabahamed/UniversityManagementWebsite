@@ -54,7 +54,7 @@
               <div class="message">
                   <img src="https://www.kuet.ac.bd/kuet-admin/messageimage/dean_ce_sazzad.jpg" alt="">
                   <div class="details">
-                      <p class="name">Prof. Dr. Quazi Sazzad Hossain</p>
+                      <p class="names">Prof. Dr. Quazi Sazzad Hossain</p>
                       <p class="designation">Dean of Civil Enginerring</p>
                       <p>
                           "Welcome to the Faculty of Civil Engineering home page!
@@ -102,7 +102,7 @@
               <div class="message">
                   <img src="https://www.kuet.ac.bd/kuet-admin/messageimage/dean_eee.jpg" alt="" class="circle">
                   <div class="details">
-                      <p class="name">Prof. Dr. Md. Shahjahan</p>
+                      <p class="names">Prof. Dr. Md. Shahjahan</p>
                       <p class="designation">Dean of EEE</p>
                       <p>
                           "Welcome you for visiting our Faculty of Electrical and Electronic Engineering website. We are one of the major Faculties in Khulna University of Engineering and Technology (KUET)"
@@ -163,7 +163,7 @@
               <div class="message">
                   <img src="https://www.kuet.ac.bd/kuet-admin/messageimage/dean_me.jpg" alt="">
                   <div class="details">
-                      <p class="name">Prof. Dr. Md. Shahidul Islam</p>
+                      <p class="names">Prof. Dr. Md. Shahidul Islam</p>
                       <p class="designation">Dean of Mechanical Engineering</p>
                       <p>
                           "Welcome to the Faculty of Mechanical Engineering of KUET. There are seven departments namely, Department of Mechanical Engineering (ME), Department of Industrial Engineering and"
