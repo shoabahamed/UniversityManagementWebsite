@@ -104,17 +104,17 @@
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" data-bs-auto-close="outside">Admission</a>
             <ul class="dropdown-menu shadow">
-              <li><a class="dropdown-item" href="#">UnderGraduate Admission Test</a></li>
-              <li><a class="dropdown-item" href="#">Post Graduate</a></li>
+              <li><a class="dropdown-item" href="https://admissionckruet.ac.bd/">UnderGraduate Admission Test</a></li>
+              <li><a class="dropdown-item" href="https://www.kuet.ac.bd/index.php/welcome/pgadmission">Post Graduate</a></li>
             </ul>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" data-bs-auto-close="outside">Facilities</a>
             <ul class="dropdown-menu shadow">
-              <li><a class="dropdown-item" href="#">Central Library</a></li>
-              <li><a class="dropdown-item" href="#">Transportation</a></li>
-              <li><a class="dropdown-item" href="#">Guest House</a></li>
-              <li><a class="dropdown-item" href="#">Central Cafeterial</a></li>
+              <li><a class="dropdown-item" href="https://library.kuet.ac.bd/">Central Library</a></li>
+              <li><a class="dropdown-item" href="{{route('medical-center')}}">Medical Center</a></li>
+              <li><a class="dropdown-item" href="{{route('guest-house')}}">Guest House</a></li>
+              <li><a class="dropdown-item" href="{{route('student-welfare')}}">Central Cafeterial</a></li>
             </ul>
           </li>
           <li class="nav-item">

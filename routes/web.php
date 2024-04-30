@@ -50,6 +50,21 @@ Route::prefix('/about')->group(function () {
 });
 
 
+Route::prefix('/facilities')->group(function () {
+    Route::get('/student-welfare', function () {
+        return view('student-welfare');
+    })->name('student-welfare');
+
+    Route::get('/guest-house', function () {
+        return view('guest-house');
+    })->name('guest-house');
+
+    Route::get('/medical-center', function () {
+        return view('medical-center');
+    })->name('medical-center');
+});
+
+
 
 Route::prefix('/administration')->group(function () {
     Route::prefix('/office-of-provosts')->group(function () {
