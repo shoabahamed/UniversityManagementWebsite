@@ -1,4 +1,4 @@
-<footer class="footer bg-success py-5">
+<footer class="footer bg-dark py-5">
     <div class="container">
         <div class="row">
             <!-- Academic & Admission -->

@@ -37,6 +37,21 @@ Route::get('/notice', function () {
     return view('notice');
 })->name('notice');
 
+Route::get('/login', function(){
+    return view('loginPage');
+})->name('login');
+
+Route::get('/student-dashboard', function(){
+    return view('student-dashboard');
+})->name('student-dashboard');
+
+Route::get('/admin-dashboard', function(){
+    return view('admin-dashboard');
+})->name('admin-dashboard');
+
+
+
+
 
 Route::prefix('/about')->group(function () {
 

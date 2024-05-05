@@ -1,4 +1,142 @@
-<nav class="navbar navbar-expand-xl  bg-success  c-navbar-section">
+<nav class="navbar navbar-expand-xl navbar-dark bg-dark">
+  <div class="container-fluid">
+    <!-- Logo with Navbar Brand -->
+    <a class="navbar-brand d-flex flex-row align-items-center" href="{{route('home')}}">
+      <img src="{{ asset('./assets/logo.png') }}" width="80" height="80" class="d-inline-block align-text-top">
+      <div class="d-flex flex-column ms-2">
+        <span class="text-wrap display-7"> Khulna University of Engineering & Technology</span>
+        <span class="d-none d-sm-inline-block display-7"> খুলনা প্রকৌশল ও প্রযুক্তি বিশ্ববিদ্যালয়</span>
+      </div>
+    </a>
+    <!-- Toggler Button -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <!-- Offcanvas Menu -->
+    <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">Navigation</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body">
+        <!-- Navbar Links -->
+        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="#">Home</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" data-bs-auto-close="outside">About</a>
+            <ul class="dropdown-menu dropdown-menu-dark">
+              <li><a class="dropdown-item" href="{{route('history')}}">History</a></li>
+              <li><a class="dropdown-item" href="{{ route('home') }}#kuet-at-a-glance">Kuet at a Glance</a></li>
+              <li><a class="dropdown-item" href="{{route('gallery')}}">Gallery</a></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" data-bs-auto-close="outside">Administration</a>
+            <ul class="dropdown-menu dropdown-menu-dark">
+              {{-- <li class="dropend">
+                <a href="#" class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown" data-bs-auto-close="outside">Authority</a>
+                <ul class="dropdown-menu shadow">
+                  <li><a class="dropdown-item" href=""> Syndicate</a></li>
+                  <li><a class="dropdown-item" href=""> Academic Council</a></li>
+                  <li><a class="dropdown-item" href=""> Finance Comittee</a></li>
+                  <li><a class="dropdown-item" href=""> Planning and Development Committee</a></li>
+                </ul>
+              </li> --}}
+              <li class="dropend">
+                <a href="#" class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown" data-bs-auto-close="outside">Office of Deans</a>
+                <ul class="dropdown-menu dropdown-menu-dark">
+                  <li><a class="dropdown-item" href="{{route('faculties')}}"> Faculty of Civil Engineering</a></li>
+                  <li><a class="dropdown-item" href="{{route('faculties')}}"> Faculty of Elecectrical Engineering</a></li>
+                  <li><a class="dropdown-item" href="{{route('faculties')}}"> Faculty of Machanical Engineering</a></li>
+                </ul>
+              </li>
+              <li class="dropend">
+                <a href="#" class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown" data-bs-auto-close="outside">Office of Provosts</a>
+                <ul class="dropdown-menu dropdown-menu-dark">
+                  <li><a class="dropdown-item" href="{{route('fuzlul-hall')}}"> Fazlul Haque Hall</a></li>
+                  <li><a class="dropdown-item" href="{{route('lalon-hall')}}"> Lalan Shah Hall</a></li>
+                  <li><a class="dropdown-item" href="{{route('kaja-hall')}}"> Khan Jahan Ali Hall</a></li>
+                  <li><a class="dropdown-item" href="{{route('rashid-hall')}}"> Dr. M.A Rashid Hall</a></li>
+                  <li><a class="dropdown-item" href="{{route('rokeya-hall')}}"> Rokya Hall(Female)</a></li>
+                  <li><a class="dropdown-item" href="{{route('umor-hall')}}"> Amar Ekushey Hall</a></li>
+                  <li><a class="dropdown-item" href="{{route('bongo-hall')}}"> Bangabandu Sheikh Mujibur Rahman Hall</a></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" data-bs-auto-close="outside">Academic</a>
+            <ul class="dropdown-menu dropdown-menu-dark">
+              <li class="dropstart">
+                <a href="#" class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown" data-bs-auto-close="outside">Faculty of Civil Engineering</a>
+                <ul class="dropdown-menu dropdown-menu-dark">
+                  <li><a class="dropdown-item" href="{{route('cse')}}"> Department of Civil Engineering</a></li>
+                  <li><a class="dropdown-item" href="{{route('cse')}}"> Department of Urban and Regional Planning</a></li>
+                  <li><a class="dropdown-item" href="{{route('cse')}}"> Department of Building Engineering and Construction Management</a></li>
+                  <li><a class="dropdown-item" href="{{route('cse')}}"> Department of Architecture</a></li>
+                  <li><a class="dropdown-item" href="{{route('cse')}}"> Department of Physics</a></li>
+                  <li><a class="dropdown-item" href="{{route('cse')}}"> Department of Chemistry</a></li>
+                  <li><a class="dropdown-item" href="{{route('cse')}}"> Department of Humanities</a></li>
+                  <li><a class="dropdown-item" href="{{route('cse')}}"> Department of Mathematics</a></li>
+                </ul>
+              </li>
+              <li class="dropstart">
+                <a href="#" class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown" data-bs-auto-close="outside">Faculty of Electrial Engineering</a>
+                <ul class="dropdown-menu dropdown-menu-dark">
+                  <li><a class="dropdown-item" href="{{route('cse')}}"> Department of Electrical and Electronic Engineering</a></li>
+                  <li><a class="dropdown-item" href="{{route('cse')}}"> Department of Computer Science and Engineering</a></li>
+                  <li><a class="dropdown-item" href="{{route('cse')}}"> Department of Electronics and Communication Engineering</a></li>
+                  <li><a class="dropdown-item" href="{{route('cse')}}"> Department of Biomedical Engineering</a></li>
+                  <li><a class="dropdown-item" href="{{route('cse')}}"> Department of Materials Science and Engineering</a></li>
+                </ul>
+              </li>
+              <li class="dropstart">
+                <a href="#" class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown" data-bs-auto-close="outside">Faculty of Machanical Engineering</a>
+                <ul class="dropdown-menu dropdown-menu-dark">
+                  <li><a class="dropdown-item" href="{{route('cse')}}"> Department of Machanical Engineering</a></li>
+                  <li><a class="dropdown-item" href="{{route('cse')}}"> Department of Industrial Engineering and ManageMent</a></li>
+                  <li><a class="dropdown-item" href="{{route('cse')}}"> Department of Energy Science and Engineering</a></li>
+                  <li><a class="dropdown-item" href="{{route('cse')}}"> Department of Leather Engineering</a></li>
+                  <li><a class="dropdown-item" href="{{route('cse')}}"> Department of Textile Engineering</a></li>
+                  <li><a class="dropdown-item" href="{{route('cse')}}"> Department of Chemical Engineering</a></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" data-bs-auto-close="outside">Admission</a>
+            <ul class="dropdown-menu dropdown-menu-dark">
+              <li><a class="dropdown-item" href="https://admissionckruet.ac.bd/">UnderGraduate Admission Test</a></li>
+              <li><a class="dropdown-item" href="https://www.kuet.ac.bd/index.php/welcome/pgadmission">Post Graduate</a></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" data-bs-auto-close="outside">Facilities</a>
+            <ul class="dropdown-menu dropdown-menu-dark">
+              <li><a class="dropdown-item" href="https://library.kuet.ac.bd/">Central Library</a></li>
+              <li><a class="dropdown-item" href="{{route('medical-center')}}">Medical Center</a></li>
+              <li><a class="dropdown-item" href="{{route('guest-house')}}">Guest House</a></li>
+              <li><a class="dropdown-item" href="{{route('student-welfare')}}">Central Cafeterial</a></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{route('login')}}">Automation</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{route('faqs')}}">FAQ</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>
+
+
+
+
+{{-- <nav class="navbar navbar-expand-xl  bg-success  c-navbar-section">
   <div class="container-fluid">
     <a class="navbar-brand d-flex flex-row align-items-center" href="{{route('home')}}">
       <img src="{{ asset('./assets/logo.png') }}" width="80" height="80" class="d-inline-block align-text-top">
@@ -40,7 +178,7 @@
                   <li><a class="dropdown-item" href=""> Planning and Development Committee</a></li>
                 </ul>
               </li> --}}
-              <li class="dropend">
+              {{-- <li class="dropend">
                 <a href="#" class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown" data-bs-auto-close="outside">Office of Deans</a>
                 <ul class="dropdown-menu shadow">
                   <li><a class="dropdown-item" href="{{route('faculties')}}"> Faculty of Civil Engineering</a></li>
@@ -118,7 +256,7 @@
             </ul>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Automation</a>
+            <a class="nav-link" href="{{route('login')}}">Automation</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="{{route('faqs')}}">FAQ</a>
@@ -126,8 +264,8 @@
         </ul>
       </div>
     </div>
-  </div>
-</nav>
+  </div> --}}
+{{--</nav> --}}
 
 {{-- 
   <nav class="navbar navbar-expand-lg shadow">
@@ -471,5 +609,3 @@
     </div>
   </div>
 </nav> --}}
-</body>
-</html>
