@@ -37,8 +37,8 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6 offset-md-3 login-container">
-                <h2 class="text-center mb-4" style="color: #006400;">Login</h2>
-                <form class="login-form" action="/login" method="POST">
+                <h2 class="text-center mb-4" style="color: #006400;">Sign Up</h2>
+                <form class="login-form" action="/register" method="POST">
                     @csrf
                     <div class="mb-3">
                         <label for="rollNumber" class="form-label">Roll Number</label>

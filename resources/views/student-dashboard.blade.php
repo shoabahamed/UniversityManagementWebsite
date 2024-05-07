@@ -47,7 +47,7 @@
     <div class="container-fluid">
       <!-- Logo with Navbar Brand -->
       <a class="navbar-brand d-flex flex-row align-items-center" href="{{route('home')}}">
-        <img src="{{ asset('./assets/logo.png') }}" width="80" height="80" class="d-inline-block align-text-top">
+        <img src="{{asset('/assets/images/extras/logo.png')}}" width="80" height="80" class="d-inline-block align-text-top">
         <div class="d-flex flex-column ms-2">
           <span class="text-wrap display-7"> Khulna University of Engineering & Technology</span>
           <span class="d-none d-sm-inline-block display-7"> খুলনা প্রকৌশল ও প্রযুক্তি বিশ্ববিদ্যালয়</span>
@@ -79,7 +79,10 @@
               <a class="nav-link" href="#" data-target="Result">Result</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#" data-target="Result">Logout</a>
+              <form action="/logout" method="POST">
+                @csrf
+                <button class="nav-link" data-target="Result" type="submit">Logout</button>
+              </form>
             </li>
         </div>
       </div>
@@ -94,7 +97,7 @@
         <div class="col-md-6 offset-md-3">
             <div class="profile-card">
                 <div class="text-center">
-                    <img src="{{asset('./assets/0.jpg')}}" alt="Profile Picture" class="profile-picture">
+                    <img src="{{asset('/assets/images/gallery/0.jpg')}}" alt="Profile Picture" class="profile-picture">
                 </div>
                 <h2 class="text-center mb-4">John Doe</h2>
                 <div class="info-item">
@@ -127,7 +130,7 @@
             </div>
         </div>
     </div>
-  </div>
+
     <div class="section d-none" id="Registration">
       registration Section
     </div>
@@ -135,6 +138,7 @@
       Result 
     </div>
   </div>
+
 
   <script>
     // Select all navigation links and sections

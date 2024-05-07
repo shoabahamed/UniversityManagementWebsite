@@ -30,25 +30,33 @@
         .login-btn {
             width: 100%;
         }
+
+        .c-announcement{
+        background: #e3f9e0;
+        height: 50px;
+        }
   </style>
 </head>
 <body>
   
     <div class="container">
+        <div class="c-announcement d-flex align-items-center justify-content-center mt-4 ps-3">
+            The file must exist inside &nbsp;<span class="fw-bold">assets/pdf/notice folder</span>
+        </div>
         <div class="row">
             <div class="col-md-6 offset-md-3 login-container">
-                <h2 class="text-center mb-4" style="color: #006400;">Login</h2>
-                <form class="login-form" action="/login" method="POST">
+                <h2 class="text-center mb-4" style="color: #006400;">Add New Notice</h2>
+                <form class="login-form" action="{{route('add-new-notice')}}" method="POST">
                     @csrf
                     <div class="mb-3">
-                        <label for="rollNumber" class="form-label">Roll Number</label>
-                        <input type="text" name="roll" class="form-control" id="rollNumber" placeholder="Enter your roll number">
+                        <label for="title" class="form-label">Title</label>
+                        <input type="text" name="title" class="form-control" id="title" placeholder="Enter notice title">
                     </div>
                     <div class="mb-3">
-                        <label for="password" class="form-label">Password</label>
-                        <input type="password"  name="password" class="form-control" id="password" placeholder="Enter your password">
+                        <label for="file_path" class="form-label">Password</label>
+                        <input type="text"  name="file_path" class="form-control" id="file_path" placeholder="Enter file name like notice-1.pdf">
                     </div>
-                    <button type="submit" class="btn btn-outline-success login-btn">Login</button>
+                    <button type="submit" class="btn btn-outline-success login-btn">Add</button>
                 </form>
             </div>
         </div>

@@ -2,7 +2,7 @@
   <div class="container-fluid">
     <!-- Logo with Navbar Brand -->
     <a class="navbar-brand d-flex flex-row align-items-center" href="{{route('home')}}">
-      <img src="{{ asset('./assets/logo.png') }}" width="80" height="80" class="d-inline-block align-text-top">
+      <img src="{{asset('./assets/images/extras/logo.png') }}" width="80" height="80" class="d-inline-block align-text-top">
       <div class="d-flex flex-column ms-2">
         <span class="text-wrap display-7"> Khulna University of Engineering & Technology</span>
         <span class="d-none d-sm-inline-block display-7"> খুলনা প্রকৌশল ও প্রযুক্তি বিশ্ববিদ্যালয়</span>
@@ -22,7 +22,7 @@
         <!-- Navbar Links -->
         <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
           <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="#">Home</a>
+            <a class="nav-link" aria-current="page" href="{{route('home')}}">Home</a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" data-bs-auto-close="outside">About</a>
@@ -122,7 +122,7 @@
             </ul>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{{route('login')}}">Automation</a>
+            <a class="nav-link" href="{{route('loginPage')}}">Automation</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="{{route('faqs')}}">FAQ</a>

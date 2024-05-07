@@ -41,31 +41,13 @@
     <div class="container mt-4 mb-4">
       <h1 class="text-center display-5" style="color: #006400;">All Notices</h1>
       <div class="row">
-        <div class="col-10 offset-1 notices align-items-center border-bottom border-success border-2 py-4">
-          <div class="fs-5 fw-bold">08 April 2023</div>
-          <div class="fs-5">TEDxIIITV 2023</div>
-          <a href="#" class="btn btn-outline-success border fs-5" download="composer.json">Download</a>
-        </div>
-        <div class="col-10 offset-1 notices align-items-center border-bottom border-success border-2 py-4">
-          <div class="fs-5 fw-bold">26 March 2023</div>
-          <div class="fs-5">Nationl Holiday</div>
-          <a href="#" class="btn btn-outline-success border fs-5">Download</a>
-        </div>
-        <div class="col-10 offset-1 notices align-items-center border-bottom border-success border-2 py-4">
-          <div class="fs-5 fw-bold">21 February 2023</div>
-          <div class="fs-5 text-wrap">International Mother Language Holiday 2023</div>
-          <a href="#" class="btn btn-outline-success border fs-5">Download</a>
-        </div>
-        <div class="col-10 offset-1 notices  border-bottom border-success border-2 py-4">
-          <div class="fs-5 fw-bold">16 December 2023</div>
-          <div class="fs-5">National Holiday</div>
-          <a href="#" class="btn btn-outline-success border fs-5">Download</a>
-        </div>
-        <div class="col-10 offset-1 notices border-bottom border-success border-2 py-4">
-          <div class="fs-5 fw-bold">08 April 2023</div>
-          <div class="fs-5">TEDxIIITV 2023</div>
-          <a href="#" class="btn btn-outline-success border fs-5">Download</a>
-        </div>
+        @foreach($notices as $notice)
+          <div class="col-10 offset-1 notices align-items-center border-bottom border-success border-2 py-4">
+            <div class="fs-5 fw-bold">{{$notice->created_at->format('d M Y')}}</div>
+            <div class="fs-5">{{$notice['title']}}</div>
+            <a href="assets/pdf/notice/{{$notice['file_path']}}" class="btn btn-outline-success border fs-5">Download</a>
+          </div>
+        @endforeach
       </div>
     </div>
 

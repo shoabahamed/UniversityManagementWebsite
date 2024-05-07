@@ -37,14 +37,14 @@
     
       <div class="row">
         <div class="col">
-          <img src="{{asset("./assets/0.jpg")}}" class="img-fluid mb-3 border border-success border-2" alt="University Main Image">
+          <img src="{{asset('/assets/images/gallery/0.jpg')}}" class="img-fluid mb-3 border border-success border-2" alt="University Main Image">
         </div>
       </div>
     
       <div class="row row-cols-1 row-cols-md-3 g-4 mb-5">
         <div class="col">
           <div class="card h-100">
-            <img src="{{asset("./assets/1.jpg")}}" class="card-img-top" alt="Image 1">
+            <img src="{{asset('/assets/images/gallery/1.jpg')}}" class="card-img-top" alt="Image 1">
             <div class="card-body">
               <p class="card-text">Kuet Entrance</p>
             </div>
@@ -52,7 +52,7 @@
         </div>
         <div class="col">
           <div class="card h-100">
-            <img src="{{asset("./assets/2.jpg")}}" class="card-img-top" alt="Image 2">
+            <img src="{{asset('/assets/images/gallery/2.jpg')}}" class="card-img-top" alt="Image 2">
             <div class="card-body">
               <p class="card-text">Kuet Guest House</p>
             </div>
@@ -60,7 +60,7 @@
         </div>
         <div class="col">
           <div class="card h-100">
-            <img src="{{asset("./assets/3.jpg")}}" class="card-img-top" alt="Image 3">
+            <img src="{{asset('/assets/images/gallery/3.jpg')}}" class="card-img-top" alt="Image 3">
             <div class="card-body">
               <p class="card-text">Kuet Sign Mark</p>
             </div>
@@ -68,7 +68,7 @@
         </div>
         <div class="col">
           <div class="card h-100">
-            <img src="{{asset("./assets/4.jpg")}}" class="card-img-top" alt="Image 4">
+            <img src="{{asset('/assets/images/gallery/4.jpg')}}" class="card-img-top" alt="Image 4">
             <div class="card-body">
               <p class="card-text">Student Welfare Center</p>
             </div>
@@ -76,7 +76,7 @@
         </div>
         <div class="col">
           <div class="card h-100">
-            <img src="{{asset("./assets/5.jpg")}}" class="card-img-top" alt="Image 5">
+            <img src="{{asset('/assets/images/gallery/5.jpg')}}" class="card-img-top" alt="Image 5">
             <div class="card-body">
               <p class="card-text">Shaeed Minar</p>
             </div>
@@ -84,7 +84,7 @@
         </div>
         <div class="col">
           <div class="card h-100">
-            <img src="{{asset("./assets/6.jpg")}}" class="card-img-top" alt="Image 6">
+            <img src="{{asset('/assets/images/gallery/6.jpg')}}" class="card-img-top" alt="Image 6">
             <div class="card-body">
               <p class="card-text">Kuet Lake</p>
             </div>
@@ -92,7 +92,7 @@
         </div>
         <div class="col">
           <div class="card h-100">
-            <img src="{{asset("./assets/7.jpg")}}" class="card-img-top" alt="Image 6">
+            <img src="{{asset('/assets/images/gallery/7.jpg')}}" class="card-img-top" alt="Image 6">
             <div class="card-body">
               <p class="card-text">Durbar Bangla</p>
             </div>
@@ -100,7 +100,7 @@
         </div>
         <div class="col">
           <div class="card h-100">
-            <img src="{{asset("./assets/8.jpg")}}" class="card-img-top" alt="Image 6">
+            <img src="{{asset('/assets/images/gallery/8.jpg')}}" class="card-img-top" alt="Image 6">
             <div class="card-body">
               <p class="card-text">Paddmo Pukur</p>
             </div>
@@ -108,7 +108,7 @@
         </div>
         <div class="col">
           <div class="card h-100">
-            <img src="{{asset("./assets/9.jpg")}}" class="card-img-top" alt="Image 6">
+            <img src="{{asset('/assets/images/gallery/9.jpg')}}" class="card-img-top" alt="Image 6">
             <div class="card-body">
               <p class="card-text">Autumn at Kuet</p>
             </div>

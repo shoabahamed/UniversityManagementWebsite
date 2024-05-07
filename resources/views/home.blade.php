@@ -28,16 +28,16 @@
           </div>
           <div class="carousel-inner">
             <div class="carousel-item active c-carousel-item" data-bs-interval="10000">
-              <img src="./assets/0.jpg" class="d-block w-100  c-carousel-img" alt="...">
+              <img src="{{asset('/assets/images/gallery/0.jpg')}}" class="d-block w-100  c-carousel-img" alt="...">
             </div>
             <div class="carousel-item c-carousel-item" data-bs-interval="2000">
-              <img src="./assets/3.jpg" class="d-block w-100 c-carousel-img" alt="...">
+              <img src="{{asset('./assets/images/gallery/3.jpg')}}" class="d-block w-100 c-carousel-img" alt="...">
             </div>
             <div class="carousel-item c-carousel-item">
-              <img src="./assets/14.jpg" class="d-block w-100 c-carousel-img" alt="...">
+              <img src="{{asset('./assets/images/gallery/14.jpg')}}" class="d-block w-100 c-carousel-img" alt="...">
             </div>
 						<div class="carousel-item c-carousel-item">
-              <img src="./assets/10.jpg" class="d-block w-100 c-carousel-img" alt="...">
+              <img src="{{asset('./assets/images/gallery/10.jpg')}}" class="d-block w-100 c-carousel-img" alt="...">
             </div>
           </div>
           <button class="carousel-control-prev" type="button" data-bs-target="#hero-section" data-bs-slide="prev">
@@ -61,7 +61,7 @@
 														Khulna University of Engineering & Technology (KUET), Bangladesh established in 1967 as Khulna Engineering College, starts its long cherished journey in 3 June, 1974 after receiving special direction from the Father of the Nation Bangabandhu Sheikh Mujibur Rahman. Later to ensure the better academic and research capabilities and environment, it is converted to an autonomous institute called Bangladesh Institute of Technology (BIT), Khulna in July 1986. To meet the demands of the days in the academic and research arena, the institute was upgraded and renamed as Khulna University of Engineering & Technology (KUET) in September 2003.
 						</p>
 						<div>
-														<a href="{{route('welcome')}}" class="btn btn-outline-success">Read More</a>
+								<a href="{{route('welcome')}}" class="btn btn-outline-success">Read More</a>
 						</div>
 				</div>
 				<div class="col-md-4 mt-3">
@@ -167,42 +167,17 @@
 						</div>
 						<div class="marquee-container">
 										<marquee direction="up" behavior="scroll" scrollamount="5" style="height:450px" onmouseover="this.stop();" onmouseout="this.start();">
-														<div class="d-flex align-items-center mb-3">
-																		<div class="event-date">
-																						<p class="mb-0">June</p>
-																						<h4 class="mb-0">21</h4>
-																		</div>
-																		<div class="event-content text-wrap">
-																						<a href="./notice" class="text-decoration-none text-dark">The faculty of EEE of KUET successfully organized the 6th International Conference on Electrical Information and Community</a>
-																		</div>
-														</div>
-														<div class="d-flex align-items-center mb-3">
-																		<div class="event-date">
-																						<p class="mb-0">June</p>
-																						<h4 class="mb-0">21</h4>
-																		</div>
-																		<div class="event-content text-wrap">
-																						<a href="./notice" class="text-decoration-none text-dark">"National Mourning Day 2023" observed at KUET</a>
-																		</div>
-														</div>
-														<div class="d-flex align-items-center mb-3">
-																		<div class="event-date">
-																						<p class="mb-0">June</p>
-																						<h4 class="mb-0">21</h4>
-																		</div>
-																		<div class="event-content text-wrap">
-																						<a href="./notice" class="text-decoration-none text-dark">Training on 'Practicing Outcome Based Education towards BAETE Accreditation' held at KUET</a>
-																		</div>
-														</div>
-														<div class="d-flex align-items-center mb-3">
-																		<div class="event-date">
-																						<p class="mb-0">June</p>
-																						<h4 class="mb-0">21</h4>
-																		</div>
-																		<div class="event-content text-wrap">
-																						<a href="./notice" class="text-decoration-none text-dark">Training on 'Practicing Outcome Based Education towards BAETE Accreditation' held at KUET</a>
-																		</div>
-														</div>
+											@foreach($notices as $notice)
+												<div class="d-flex align-items-center mb-3">
+													<div class="event-date">
+															<p class="mb-0">{{$notice->created_at->format('M')}}</p>
+															<h4 class="mb-0">{{$notice->created_at->format('d')}}</h4>
+													</div>
+													<div class="event-content text-wrap">
+															<a href="assets/pdf/notice/{{$notice['file_path']}}" class="text-decoration-none text-dark">{{$notice['title']}}</a>
+													</div>
+												</div>
+											@endforeach		
 										</marquee>
 						</div>
 						<div class="d-flex justify-content-center mt-5">

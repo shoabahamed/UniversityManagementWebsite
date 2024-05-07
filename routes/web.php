@@ -1,5 +1,12 @@
 <?php
 
+use App\Http\Controllers\AdminDashboardController;
+use App\Http\Controllers\UserController;
+use App\Http\Middleware\isAdmin;
+use App\Http\Middleware\isLoggedIn;
+use App\Models\Notice;
+use App\Models\User;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,7 +21,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('home');
+    $notices = Notice::latest()->take(6)->get();
+    return view('home', ["notices"=> $notices]);
 })->name("home");
 
 Route::get('/faqs', function () {
@@ -34,23 +42,34 @@ Route::get('/faculties', function () {
 })->name('faculties');
 
 Route::get('/notice', function () {
-    return view('notice');
+    $notices = Notice::latest()->take(30)->get();
+    return view('notice', ["notices"=> $notices]);
 })->name('notice');
 
-Route::get('/login', function(){
-    return view('loginPage');
-})->name('login');
+Route::get('/loginPage', [UserController::class, "showLoginPage"])->name('loginPage')->middleware("isLoggedIn");
+Route::get('/registerPage', [UserController::class, "showRegisterPage"])->name('registerPage');
+
+Route::post('/login', [UserController::class, 'userLogin']);
+Route::post('/register', [UserController::class, 'userRegister']);
+Route::post("/logout", [UserController::class, 'userLogout']);
+
+
+
+
 
 Route::get('/student-dashboard', function(){
     return view('student-dashboard');
 })->name('student-dashboard');
 
-Route::get('/admin-dashboard', function(){
-    return view('admin-dashboard');
-})->name('admin-dashboard');
+
+// adming dashboard
+Route::get('/admin-dashboard', [AdminDashboardController::class, "getAdminDashBoard"])->name('admin-dashboard')->middleware("isAdmin");
 
 
-
+Route::prefix('/admin-dashboard')->group(function () {
+    Route::get('/add-new-notice-page', [AdminDashboardController::class, 'addNewNoticePage'])->name('add-new-notice-page');
+    Route::post('/add-new-notice', [AdminDashboardController::class, 'addNewNotice'])->name('add-new-notice');
+})->middleware('isAdmin');
 
 
 Route::prefix('/about')->group(function () {
@@ -133,3 +152,5 @@ Route::prefix('/academic')->group(function () {
 Route::get('/test', function () {
     return view('test');
 });
+
+
