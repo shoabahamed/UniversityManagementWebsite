@@ -11,9 +11,7 @@ class UserController extends Controller
     public function showLoginPage(){
         return view('loginPage');
     }
-    public function showRegisterPage(){
-        return view("registerPage");
-    }
+
 
 
     public function userLogin(Request $request){
@@ -29,20 +27,6 @@ class UserController extends Controller
         }else{
             return redirect("/loginPage");
         }
-    }
-
-    public function userRegister(Request $request){
-        $incominFields = $request->validate([
-            'roll'=> ['required'],
-            'password' => ['required']
-        ]);
-        
-        $incominFields['is_admin'] = 0;
-        $incominFields['password'] = bcrypt($incominFields['password']);
-        User::create($incominFields);
-
-        return redirect('/registerPage');
-        
     }
 
     public function userLogout(){

@@ -30,31 +30,26 @@
         .login-btn {
             width: 100%;
         }
-
-        .c-announcement{
-        background: #e3f9e0;
-        height: 50px;
+        .custom-file-label::after {
+            content: "Browse";
         }
-  </style>
+    </style>
 </head>
 <body>
   
     <div class="container">
-        <div class="c-announcement d-flex align-items-center justify-content-center mt-4 ps-3">
-            The file must exist inside &nbsp;<span class="fw-bold">assets/pdf/notice folder</span>
-        </div>
         <div class="row">
             <div class="col-md-6 offset-md-3 login-container">
                 <h2 class="text-center mb-4" style="color: #006400;">Add New Notice</h2>
-                <form class="login-form" action="{{route('add-new-notice')}}" method="POST">
+                <form class="login-form" action="{{ route('add-new-notice') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="mb-3">
                         <label for="title" class="form-label">Title</label>
                         <input type="text" name="title" class="form-control" id="title" placeholder="Enter notice title">
                     </div>
                     <div class="mb-3">
-                        <label for="file_path" class="form-label">Password</label>
-                        <input type="text"  name="file_path" class="form-control" id="file_path" placeholder="Enter file name like notice-1.pdf">
+                        <label for="file" class="form-label">Upload PDF</label>
+                        <input type="file" name="pdf" class="form-control" id="file">
                     </div>
                     <button type="submit" class="btn btn-outline-success login-btn">Add</button>
                 </form>

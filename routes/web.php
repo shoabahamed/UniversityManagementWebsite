@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminDashboardController;
+use App\Http\Controllers\ImageController;
 use App\Http\Controllers\UserController;
 use App\Http\Middleware\isAdmin;
 use App\Http\Middleware\isLoggedIn;
@@ -47,10 +48,8 @@ Route::get('/notice', function () {
 })->name('notice');
 
 Route::get('/loginPage', [UserController::class, "showLoginPage"])->name('loginPage')->middleware("isLoggedIn");
-Route::get('/registerPage', [UserController::class, "showRegisterPage"])->name('registerPage');
 
 Route::post('/login', [UserController::class, 'userLogin']);
-Route::post('/register', [UserController::class, 'userRegister']);
 Route::post("/logout", [UserController::class, 'userLogout']);
 
 
@@ -69,6 +68,8 @@ Route::get('/admin-dashboard', [AdminDashboardController::class, "getAdminDashBo
 Route::prefix('/admin-dashboard')->group(function () {
     Route::get('/add-new-notice-page', [AdminDashboardController::class, 'addNewNoticePage'])->name('add-new-notice-page');
     Route::post('/add-new-notice', [AdminDashboardController::class, 'addNewNotice'])->name('add-new-notice');
+    Route::post('/register', [AdminDashboardController::class, 'userRegister'])->name('user-register');
+
 })->middleware('isAdmin');
 
 
@@ -152,5 +153,9 @@ Route::prefix('/academic')->group(function () {
 Route::get('/test', function () {
     return view('test');
 });
+
+Route::post('/upload-image', [ImageController::class, 'upload'])->name('uploadImage');
+
+
 
 

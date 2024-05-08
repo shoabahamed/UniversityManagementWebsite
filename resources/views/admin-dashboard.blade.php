@@ -17,29 +17,6 @@
     <script src="https://kit.fontawesome.com/31b429dc0a.js" crossorigin="anonymous"></script>
     
   <style>
-        .profile-card {
-            background-color: #fff;
-            border-radius: 10px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-            padding: 30px;
-            margin-bottom: 20px;
-        }
-        .profile-picture {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            margin: 0 auto 20px;
-            display: block;
-        }
-        .info-item {
-            margin-bottom: 20px;
-        }
-        .info-label {
-            font-weight: bold;
-            width: 150px;
-            display: inline-block;
-        }
-
       .notices{
         display: flex;
         flex-direction: row;
@@ -52,6 +29,47 @@
           row-gap: 1rem;
         }
       }
+
+      .card-header {
+      background-color: #28a745;
+      color: white;
+      border-bottom: none;
+    }
+    .card-body {
+      background-color: #f8f9fa;
+    }
+    .btn-success {
+      background-color: #28a745;
+      border-color: #28a745;
+    }
+    .btn-success:hover {
+      background-color: #218838;
+      border-color: #1e7e34;
+    }
+    .form-control:focus {
+      border-color: #28a745;
+      box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25);
+    }
+    .form-check-input:checked {
+      background-color: #28a745;
+    }
+    .form-check-input:checked:after {
+      content: '';
+      display: block;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background-color: white;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .form-group{
+      margin-bottom: 1rem;
+    }
+
   </style>
 </head>
 <body>
@@ -86,7 +104,7 @@
               <a class="nav-link" href="#" data-target="Notice">Notices</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#" data-target="Registration">Registration</a>
+              <a class="nav-link" href="#" data-target="Registration">Register User</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#" data-target="Result">Result</a>
@@ -121,8 +139,106 @@
     </div>
 
     <div class="section d-none" id="Registration">
-      registration Section
+      <div class="row justify-content-center">
+        <div class="col-md-8">
+          <div class="card">
+            <div class="card-header">Registration Form</div>
+            <div class="card-body">
+              <form action="{{route('user-register')}}" method="POST">
+                @csrf
+                <div class="form-group">
+                  <label for="roll">Roll:</label>
+                  <input type="number" class="form-control" id="roll" name="roll" placeholder="Enter Roll">
+                </div>
+                <div class="form-group">
+                  <label for="password">Password:</label>
+                  <input type="password" class="form-control" id="password" name="password" placeholder="Enter Password">
+                </div>
+                <div class="form-group">
+                  <label for="email">Email:</label>
+                  <input type="email" class="form-control" id="email" name="email" placeholder="Enter Email">
+                </div>
+                <div class="form-group">
+                  <label for="is_admin">Is Admin:</label>
+                  <select class="form-control" id="is_admin" name="is_admin">
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="name">Name:</label>
+                  <input type="text" class="form-control" id="name" name="name" placeholder="Enter Name">
+                </div>
+                <div class="form-group">
+                  <label for="image">Upload Image:</label>
+                  <input type="file" class="form-control-file" id="image" name="image_path">
+                </div>
+                <div class="form-group">
+                  <label for="father">Father's Name:</label>
+                  <input type="text" class="form-control" id="father" name="father_name" placeholder="Enter Father's Name">
+                </div>
+                <div class="form-group">
+                  <label for="mother">Mother's Name:</label>
+                  <input type="text" class="form-control" id="mother" name="mother_name" placeholder="Enter Mother's Name">
+                </div>
+                <div class="form-group">
+                  <label for="mobile">Mobile No:</label>
+                  <input type="number" class="form-control" id="mobile" name="mobile_no" placeholder="Enter Mobile No">
+                </div>
+                <div class="form-group">
+                  <label for="address">Address:</label>
+                  <textarea class="form-control" id="address" name="address" rows="2" placeholder="Enter Address"></textarea>
+                </div>
+                <div class="form-group">
+                  <label for="hall">Hall Name:</label>
+                  <select class="form-control" id="hall" name="hall_name">
+                    <option value="">Select Hall</option>
+                    <option value="Fazlul Haq Hall">Fazlul Haq Hall</option>
+                    <option value="Khan jahan ali hall">Khan jahan ali hall</option>
+                    <option value="Dr. MA Rashid Hall">Dr. MA Rashid Hall</option>
+                    <option value="Bongobondo Hall">Bongobondo Hall</option>
+                    <option value="Amar Ekose Hall">Amar Ekose Hall</option>
+                    <option value="Lalon Shah Hall">Lalon Shah Hall</option>
+                    <option value="Begom Rokeya Hall">Begom Rokeya Hall</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="blood-group">Blood Group:</label>
+                  <select class="form-control" id="blood-group" name="blood_group">
+                    <option value="">Select Blood Group</option>
+                    <option value="A+">A+</option>
+                    <option value="A-">A-</option>
+                    <option value="B+">B+</option>
+                    <option value="B-">B-</option>
+                    <option value="AB+">AB+</option>
+                    <option value="AB-">AB-</option>
+                    <option value="O+">O+</option>
+                    <option value="O-">O-</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="gender">Gender:</label>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="gender" id="male" value="male">
+                    <label class="form-check-label" for="male">
+                      Male
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="gender" id="female" value="female">
+                    <label class="form-check-label" for="female">
+                      Female
+                    </label>
+                  </div>
+                </div>
+                <button type="submit" class="btn btn-outline-success btn-block">Submit</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+
     <div class="section d-none" id="Result">
       Result 
     </div>
