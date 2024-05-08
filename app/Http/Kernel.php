@@ -6,6 +6,7 @@ use App\Http\Middleware\isAdmin;
 use App\Http\Middleware\isLoggedIn;
 use App\Http\Middleware\isLoggedInAdmin;
 use App\Http\Middleware\isLoggedInStudent;
+use App\Http\Middleware\isStudent;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -68,6 +69,7 @@ class Kernel extends HttpKernel
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'isAdmin'=> isAdmin::class,
-        'isLoggedIn' => isLoggedIn::class
+        'isLoggedIn' => isLoggedIn::class,
+        'isStudent'  => isStudent::class
     ];
 }

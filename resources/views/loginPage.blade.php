@@ -35,6 +35,15 @@
 <body>
   
     <div class="container">
+        @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+        @endif
         <div class="row">
             <div class="col-md-6 offset-md-3 login-container">
                 <h2 class="text-center mb-4" style="color: #006400;">Login</h2>

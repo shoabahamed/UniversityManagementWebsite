@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\ImageController;
+use App\Http\Controllers\StudentDashboardController;
 use App\Http\Controllers\UserController;
 use App\Http\Middleware\isAdmin;
 use App\Http\Middleware\isLoggedIn;
@@ -55,22 +56,24 @@ Route::post("/logout", [UserController::class, 'userLogout']);
 
 
 
-
+// student dashboard
 Route::get('/student-dashboard', function(){
     return view('student-dashboard');
-})->name('student-dashboard');
+})->name('student-dashboard')->middleware('isStudent');
+
+Route::prefix('/student-dashboard')->middleware(["isStudent"])->group(function () {
+    Route::get('', [StudentDashboardController::class, "getStudentDashBoard"])->name('admin-dashboard');
+});
 
 
-// adming dashboard
-Route::get('/admin-dashboard', [AdminDashboardController::class, "getAdminDashBoard"])->name('admin-dashboard')->middleware("isAdmin");
+// admin dashboard
 
-
-Route::prefix('/admin-dashboard')->group(function () {
+Route::prefix('/admin-dashboard')->middleware(["isAdmin"])->group(function () {
+    Route::get('', [AdminDashboardController::class, "getAdminDashBoard"])->name('admin-dashboard');
     Route::get('/add-new-notice-page', [AdminDashboardController::class, 'addNewNoticePage'])->name('add-new-notice-page');
     Route::post('/add-new-notice', [AdminDashboardController::class, 'addNewNotice'])->name('add-new-notice');
     Route::post('/register', [AdminDashboardController::class, 'userRegister'])->name('user-register');
-
-})->middleware('isAdmin');
+});
 
 
 Route::prefix('/about')->group(function () {
@@ -148,13 +151,11 @@ Route::prefix('/academic')->group(function () {
 
 
 
-
-
 Route::get('/test', function () {
     return view('test');
 });
 
-Route::post('/upload-image', [ImageController::class, 'upload'])->name('uploadImage');
+
 
 
 

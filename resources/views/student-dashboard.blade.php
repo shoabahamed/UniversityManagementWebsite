@@ -89,7 +89,7 @@
     </div>
   </nav>
   
-
+ 
   <div class="container my-4">
     <div class="section" style="background:#f8f9fa;" id="Profile">
       <h1 class="display-4 text-center mb-4" style="color: #006400;">Personal Information</h1>
@@ -97,32 +97,35 @@
         <div class="col-md-6 offset-md-3">
             <div class="profile-card">
                 <div class="text-center">
-                    <img src="{{asset('/assets/images/gallery/0.jpg')}}" alt="Profile Picture" class="profile-picture">
+                    <img src="assets/images/users/{{$userDetails['image_path']}}" alt="Profile Picture" class="profile-picture">
                 </div>
-                <h2 class="text-center mb-4">John Doe</h2>
+                <h2 class="text-center mb-4">{{$userDetails['name']}}</h2>
                 <div class="info-item">
-                    <span class="info-label">Mobile Number:</span> 123-456-7890 <button class="btn btn-outline-success">Update</button>
-                </div>
+                  <span class="info-label">Roll Number:</span> {{$user['roll']}}
+              </div>
                 <div class="info-item">
-                    <span class="info-label">Father's Name:</span> John Doe Sr.
-                </div>
-                <div class="info-item">
-                    <span class="info-label">Mother's Name:</span> Jane Doe
+                    <span class="info-label">Mobile Number:</span> {{$userDetails['mobile_no']}} <button class="btn btn-outline-success">Update</button>
                 </div>
                 <div class="info-item">
-                    <span class="info-label">Address:</span> 123 Main St, City, Country <button class="btn btn-outline-success">Update</button>
+                    <span class="info-label">Father's Name:</span> {{$userDetails['father_name']}}
                 </div>
                 <div class="info-item">
-                    <span class="info-label">Hall Name:</span> Hall of Residence
+                    <span class="info-label">Mother's Name:</span> {{$userDetails['mother_name']}}
                 </div>
                 <div class="info-item">
-                    <span class="info-label">Blood Group:</span> O+
+                    <span class="info-label">Address:</span> {{$userDetails['address']}} <button class="btn btn-outline-success">Update</button>
                 </div>
                 <div class="info-item">
-                    <span class="info-label">Gender:</span> Male
+                    <span class="info-label">Hall Name:</span> {{$userDetails['hall_name']}}
                 </div>
                 <div class="info-item">
-                    <span class="info-label">Email:</span> john@example.com 
+                    <span class="info-label">Blood Group:</span> {{$userDetails['blood_group']}}
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Gender:</span> {{$userDetails['gender']}}
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Email:</span> {{$userDetails['email']}}
                 </div>
                 <div class="info-item">
                     <span class="info-label">Password:</span> ********

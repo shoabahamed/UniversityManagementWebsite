@@ -15,10 +15,20 @@ class isAdmin
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if(auth()->user()->is_admin == 1){
+        // if(auth()->check()){
+        //     if(auth()->user()->is_admin == 1){
+        //         return redirect('/admin-dashboard');
+        //     }else{
+        //         return redirect('/student-dashboard');
+        //     } 
+        // }else{
+        //     return redirect('/loginPage');
+        // }
+        if(auth()->check() && auth()->user()->is_admin == 1){
             return $next($request);
         }else{
-            return redirect('/');;
-        } 
+            return redirect('/loginPage');
+        }
+
     }
 }

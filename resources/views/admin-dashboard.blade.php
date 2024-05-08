@@ -70,6 +70,22 @@
       margin-bottom: 1rem;
     }
 
+    .teacher-card {
+      border: 2px solid #006400; /* Dark green border */
+      margin-bottom: 20px;
+      padding: 20px;
+      border-radius: 10px;
+      background-color: #fff;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    .teacher-card img {
+      border-radius: 50%;
+      max-width: 100px;
+    }
+    .teacher-info {
+      margin-top: 15px;
+    }
+
   </style>
 </head>
 <body>
@@ -101,13 +117,13 @@
               <a class="nav-link" aria-current="page" href="{{route('home')}}">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#" data-target="Notice">Notices</a>
+              <a class="nav-link" href="#notices" data-target="Notice">Notices</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#" data-target="Registration">Register User</a>
+              <a class="nav-link" href="#register" data-target="Registration">Register User</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#" data-target="Result">Result</a>
+              <a class="nav-link" href="#teachers" data-target="Teacher">Teachers</a>
             </li>
             <li class="nav-item">
               <form action="/logout" method="POST">
@@ -139,59 +155,68 @@
     </div>
 
     <div class="section d-none" id="Registration">
+      @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+      @endif
       <div class="row justify-content-center">
         <div class="col-md-8">
           <div class="card">
             <div class="card-header">Registration Form</div>
             <div class="card-body">
-              <form action="{{route('user-register')}}" method="POST">
+              <form action="{{route('user-register')}}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group">
                   <label for="roll">Roll:</label>
-                  <input type="number" class="form-control" id="roll" name="roll" placeholder="Enter Roll">
+                  <input type="number" class="form-control" id="roll" name="roll" placeholder="Enter Roll" required>
                 </div>
                 <div class="form-group">
                   <label for="password">Password:</label>
-                  <input type="password" class="form-control" id="password" name="password" placeholder="Enter Password">
+                  <input type="password" class="form-control" id="password" name="password" placeholder="Enter Password" required>
                 </div>
                 <div class="form-group">
                   <label for="email">Email:</label>
-                  <input type="email" class="form-control" id="email" name="email" placeholder="Enter Email">
+                  <input type="email" class="form-control" id="email" name="email" placeholder="Enter Email" required>
                 </div>
                 <div class="form-group">
                   <label for="is_admin">Is Admin:</label>
-                  <select class="form-control" id="is_admin" name="is_admin">
+                  <select class="form-control" id="is_admin" name="is_admin" required>
                     <option value="1">Yes</option>
                     <option value="0">No</option>
                   </select>
                 </div>
                 <div class="form-group">
                   <label for="name">Name:</label>
-                  <input type="text" class="form-control" id="name" name="name" placeholder="Enter Name">
+                  <input type="text" class="form-control" id="name" name="name" placeholder="Enter Name" required>
                 </div>
                 <div class="form-group">
                   <label for="image">Upload Image:</label>
-                  <input type="file" class="form-control-file" id="image" name="image_path">
+                  <input type="file" class="form-control-file" id="image" name="image_path" required>
                 </div>
                 <div class="form-group">
                   <label for="father">Father's Name:</label>
-                  <input type="text" class="form-control" id="father" name="father_name" placeholder="Enter Father's Name">
+                  <input type="text" class="form-control" id="father" name="father_name" placeholder="Enter Father's Name" required>
                 </div>
                 <div class="form-group">
                   <label for="mother">Mother's Name:</label>
-                  <input type="text" class="form-control" id="mother" name="mother_name" placeholder="Enter Mother's Name">
+                  <input type="text" class="form-control" id="mother" name="mother_name" placeholder="Enter Mother's Name" required>
                 </div>
                 <div class="form-group">
                   <label for="mobile">Mobile No:</label>
-                  <input type="number" class="form-control" id="mobile" name="mobile_no" placeholder="Enter Mobile No">
+                  <input type="number" class="form-control" id="mobile" name="mobile_no" placeholder="Enter Mobile No" required>
                 </div>
                 <div class="form-group">
                   <label for="address">Address:</label>
-                  <textarea class="form-control" id="address" name="address" rows="2" placeholder="Enter Address"></textarea>
+                  <textarea class="form-control" id="address" name="address" rows="2" placeholder="Enter Address" required></textarea>
                 </div>
                 <div class="form-group">
                   <label for="hall">Hall Name:</label>
-                  <select class="form-control" id="hall" name="hall_name">
+                  <select class="form-control" id="hall" name="hall_name" required>
                     <option value="">Select Hall</option>
                     <option value="Fazlul Haq Hall">Fazlul Haq Hall</option>
                     <option value="Khan jahan ali hall">Khan jahan ali hall</option>
@@ -204,7 +229,7 @@
                 </div>
                 <div class="form-group">
                   <label for="blood-group">Blood Group:</label>
-                  <select class="form-control" id="blood-group" name="blood_group">
+                  <select class="form-control" id="blood-group" name="blood_group" required>
                     <option value="">Select Blood Group</option>
                     <option value="A+">A+</option>
                     <option value="A-">A-</option>
@@ -219,13 +244,13 @@
                 <div class="form-group">
                   <label for="gender">Gender:</label>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="gender" id="male" value="male">
+                    <input class="form-check-input" type="radio" name="gender" id="male" value="male" required>
                     <label class="form-check-label" for="male">
                       Male
                     </label>
                   </div>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="gender" id="female" value="female">
+                    <input class="form-check-input" type="radio" name="gender" id="female" value="female" required>
                     <label class="form-check-label" for="female">
                       Female
                     </label>
@@ -239,9 +264,50 @@
       </div>
     </div>
 
-    <div class="section d-none" id="Result">
-      Result 
+    <div class="section d-none" id="Teacher">
+      <div class="container">
+        <h2 class="mt-5 mb-4">Meet Our Teachers</h2>
+        <div class="row">
+          <div class="col-md-4">
+            <div class="teacher-card">
+              <img src="assets/images/teachers/eee_dean.jpg" alt="Teacher 1">
+              <div class="teacher-info">
+                <h4>Teacher Name 1</h4>
+                <p><strong>Department:</strong> Department Name</p>
+                <p><strong>Phone:</strong> Phone Number</p>
+                <p><strong>Email:</strong> example@example.com</p>
+                <p><strong>Fax:</strong> Fax Number</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="teacher-card">
+              <img src="teacher2.jpg" alt="Teacher 2">
+              <div class="teacher-info">
+                <h4>Teacher Name 2</h4>
+                <p><strong>Department:</strong> Department Name</p>
+                <p><strong>Phone:</strong> Phone Number</p>
+                <p><strong>Email:</strong> example@example.com</p>
+                <p><strong>Fax:</strong> Fax Number</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="teacher-card">
+              <img src="teacher3.jpg" alt="Teacher 3">
+              <div class="teacher-info">
+                <h4>Teacher Name 3</h4>
+                <p><strong>Department:</strong> Department Name</p>
+                <p><strong>Phone:</strong> Phone Number</p>
+                <p><strong>Email:</strong> example@example.com</p>
+                <p><strong>Fax:</strong> Fax Number</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+
   </div>
 
 

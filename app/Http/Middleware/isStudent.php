@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class isLoggedIn
+class isStudent
 {
     /**
      * Handle an incoming request.
@@ -15,12 +15,11 @@ class isLoggedIn
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if(auth()->check()){
-            if(auth()->user()->is_admin == 1){
-                return redirect('/admin-dashboard');
-            }else{
-                return redirect('/student-dashboard');
-            }
+
+        if(auth()->check() && auth()->user()->is_admin == 0){
+            return $next($request);
+        }else{
+            return redirect('/loginPage');
         }
         return $next($request);
     }
