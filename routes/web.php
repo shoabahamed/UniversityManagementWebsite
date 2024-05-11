@@ -78,6 +78,8 @@ Route::prefix('/student-dashboard')->middleware(["isStudent"])->group(function (
     Route::get('', [StudentDashboardController::class, "getStudentDashBoard"])->name('admin-dashboard');
     Route::get('/update-user-information-page/{user}', [StudentDashboardController::class, "showuserUpdatePage"])->name('update-user-information-page');
     Route::post('/update-student-user/{user}', [StudentDashboardController::class, "updateStudentUser"])->name('update-student-user');
+    Route::post('/add-user-course', [StudentDashboardController::class, "addUserCourse"])->name('add-user-course');
+    Route::post('/delete-user-course/{regCourse}', [StudentDashboardController::class, "deleteUserCourse"])->name('delete-user-course');
 });
 
 

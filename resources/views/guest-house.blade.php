@@ -54,10 +54,10 @@
     
       <div class="row justify-content-center">
         <div class="col-md-5">
-          <img src="https://www.kuet.ac.bd/images/guest_house/gh_1.jpg" class="section-img" alt="Guest House Image 1">
+          <img src="{{asset('./assets/images/extras/gh_1.jpg')}}" class="section-img" alt="Guest House Image 1">
         </div>
         <div class="col-md-5">
-          <img src="https://www.kuet.ac.bd/images/guest_house/gh_2.jpg" class="section-img" alt="Guest House Image 2">
+          <img src="{{asset('./assets/images/extras/gh_2.jpg')}}" class="section-img" alt="Guest House Image 2">
         </div>
       </div>
     

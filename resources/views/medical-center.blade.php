@@ -47,7 +47,7 @@
       </p>
     
       <div class="row justify-content-center">
-        <img src="https://www.kuet.ac.bd/images/medical/kmc.jpg" class="section-img col-7" alt="Medical Center Image">
+        <img src="{{asset('./assets/images/extras/kmc.jpg')}}" class="section-img col-7" alt="Medical Center Image">
       </div>
 
     

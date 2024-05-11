@@ -132,7 +132,7 @@
             <li class="nav-item">
               <form action="/logout" method="POST">
                 @csrf
-                <button class="nav-link" data-target="Result" type="submit">Logout</button>
+                <button class="nav-link"  type="submit">Logout</button>
               </form>
             </li>
         </div>

@@ -39,6 +39,36 @@
             width: 150px;
             display: inline-block;
         }
+
+        /* CSS for the Course Registration section */
+
+
+.card {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+}
+
+.card-title {
+  color: #006400;
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+ label {
+  font-weight: bold;
+}
+
+select.form-control {
+  border-radius: 0;
+}
+
+
   </style>
 </head>
 <body>
@@ -73,12 +103,15 @@
               <a class="nav-link" style="cursor: pointer" data-target="Profile">Profile</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" style="cursor: pointer" data-target="Registration">Registration</a>
+              <a class="nav-link" style="cursor: pointer" data-target="Course Reg">Register Course</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" style="cursor: pointer" data-target="Show Course">Show Course</a>
             </li>
             <li class="nav-item">
               <form action="/logout" method="POST">
                 @csrf
-                <button class="nav-link" data-target="Result" type="submit">Logout</button>
+                <button class="nav-link" type="submit">Logout</button>
               </form>
             </li>
         </div>
@@ -90,6 +123,22 @@
   
  
   <div class="container my-4">
+    @if ($errors->any())
+      <div class="alert alert-danger">
+          <ul>
+              @foreach ($errors->all() as $error)
+                  <li>{{ $error }}</li>
+              @endforeach
+          </ul>
+      </div>
+    @endif
+
+    @if(session('success'))
+      <div class="alert alert-success" id="successMessage" role="alert">
+          {{ session('success') }}
+      </div>
+    @endif
+
     <div class="section" style="background:#f8f9fa;" id="Profile">
       <h1 class="display-4 text-center mb-4" style="color: #006400;">Personal Information</h1>
       <div class="row">
@@ -134,13 +183,92 @@
                 </div>
             </div>
         </div>
+      </div>
     </div>
 
-    <div class="section d-none" id="Registration">
-      registration Section
-    </div>
+    <div class="section d-none" id="Course Reg">
+        <div class="row justify-content-center">
+          <div class="col-md-6">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Add Courses</h5>
+                <form method="POST" action="{{ route('add-user-course') }}">
+                  @csrf
+                  <input type="hidden" name="selected_section" value="Course Reg">
+                  <div class="form-group">
+                      <label for="selectDept">Select Department</label>
+                      <select class="form-control" id="selectDept" name="department">
+                          <option value="">Choose...</option>
+                          @foreach($departments as $department)
+                              <option value="{{ $department }}">{{ $department }}</option>
+                          @endforeach
+                      </select>
+                  </div>
+                  <div class="form-group">
+                      <label for="selectCourse">Select Course</label>
+                      <select class="form-control" id="selectCourse" name="course">
+                          <option value="">Choose...</option>
+                      </select>
+                  </div>
+                  <button type="submit" class="btn btn-outline-success">Submit</button>
+              </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+    </div> 
+
+    <div class="section d-none" id="Show Course">
+      <div class="container">
+          <h5 class="display-4 text-center mb-4" style="color: #006400;">Registered Courses</h5>
+          <div class="table-responsive">
+              <table class="table table-bordered">
+                  <thead class="table-success">
+                      <tr>
+                          <th>Course Name</th>
+                          <th>Course Code</th>
+                          <th>Course Score</th>
+                          <th>Remove Course</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      @php
+                          $totalScore = 0;
+                      @endphp
+                      @foreach($submittedCourses as $course)
+                          <tr>
+                              <td>{{ $course->course_name }}</td>
+                              <td class="text-uppercase">{{$course->course_dept}}-{{ $course->course_code }}</td>
+                              <td>{{ $course->course_score }}</td>
+                              <td>
+                                  <form action="{{ route('delete-user-course', ['regCourse' => $course->id]) }}" method="POST">
+                                      @csrf
+                                      <input type="hidden" name="selected_section" value="Show Course">
+                                      <button class="btn btn-outline-danger">Delete</button>
+                                  </form>
+                              </td>
+                          </tr>
+                          @php
+                              $totalScore += $course->course_score;
+                          @endphp
+                      @endforeach
+                  </tbody>
+                  <tfoot>
+                      <tr>
+                          <td colspan="1"></td>
+                          <td class="fw-bold">Total Score:</td>
+                          <td class="fw-bold">{{ $totalScore }}</td>
+                          <td class="fw-bold">Result:</td>
+                      </tr>
+                  </tfoot>
+              </table>
+          </div>
+      </div>
   </div>
-
+  
+  </div>
 
   <script>
     // Select all navigation links and sections
@@ -160,6 +288,47 @@
       });
     });
   </script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+      const selectDept = document.getElementById('selectDept');
+      const selectCourse = document.getElementById('selectCourse');
+
+      // Event listener for change in department dropdown
+      selectDept.addEventListener('change', function() {
+          const selectedDept = this.value;
+          const courses = @json($courses);
+
+          // Clear existing options
+          selectCourse.innerHTML = '<option value="">Choose...</option>';
+
+          // Filter courses based on selected department
+          const filteredCourses = Object.entries(courses).filter(([id, course]) => {
+              return course.department === selectedDept;
+          });
+
+          // Add filtered courses as options to the course dropdown
+          filteredCourses.forEach(([id, course]) => {
+              const option = document.createElement('option');
+              option.value = id;
+              option.textContent = course.name;
+              selectCourse.appendChild(option);
+          });
+      });
+  });
+</script>
+
+<script>
+      // Hide the success message after 5 seconds
+      setTimeout(function() {
+        document.getElementById('successMessage').style.display = 'none';
+    }, 5000);
+
+
+
+</script>
+
+
 
 </body>
 </html>
