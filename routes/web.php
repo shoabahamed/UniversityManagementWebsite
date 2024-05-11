@@ -1,15 +1,16 @@
 <?php
 
-use App\Http\Controllers\AdminDashboardController;
-use App\Http\Controllers\ImageController;
-use App\Http\Controllers\StudentDashboardController;
-use App\Http\Controllers\UserController;
+use App\Models\User;
+use App\Models\Notice;
+use App\Models\Teacher;
+use Illuminate\Http\Request;
 use App\Http\Middleware\isAdmin;
 use App\Http\Middleware\isLoggedIn;
-use App\Models\Notice;
-use App\Models\User;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\ImageController;
+use App\Http\Controllers\AdminDashboardController;
+use App\Http\Controllers\StudentDashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,7 +41,19 @@ Route::get('/vc-message', function () {
 })->name('vc-message');
 
 Route::get('/faculties', function () {
-    return view('faculties');
+    $eeeDean = Teacher::where('is_dean', 1)
+                           ->where('dean_faculty', 'eee')
+                           ->first();
+
+    $ceDean = Teacher::where('is_dean', 1)
+                          ->where('dean_faculty', 'ce')
+                          ->first();
+
+    $meDean = Teacher::where('is_dean', 1)
+                          ->where('dean_faculty', 'me')
+                          ->first();
+
+    return view('faculties', ['eeeDean' => $eeeDean, 'ceDean'=>$ceDean, 'meDean'=>$meDean]);
 })->name('faculties');
 
 Route::get('/notice', function () {
@@ -63,6 +76,8 @@ Route::get('/student-dashboard', function(){
 
 Route::prefix('/student-dashboard')->middleware(["isStudent"])->group(function () {
     Route::get('', [StudentDashboardController::class, "getStudentDashBoard"])->name('admin-dashboard');
+    Route::get('/update-user-information-page/{user}', [StudentDashboardController::class, "showuserUpdatePage"])->name('update-user-information-page');
+    Route::post('/update-student-user/{user}', [StudentDashboardController::class, "updateStudentUser"])->name('update-student-user');
 });
 
 
@@ -73,6 +88,13 @@ Route::prefix('/admin-dashboard')->middleware(["isAdmin"])->group(function () {
     Route::get('/add-new-notice-page', [AdminDashboardController::class, 'addNewNoticePage'])->name('add-new-notice-page');
     Route::post('/add-new-notice', [AdminDashboardController::class, 'addNewNotice'])->name('add-new-notice');
     Route::post('/register', [AdminDashboardController::class, 'userRegister'])->name('user-register');
+    Route::get('/add-new-teacher-page', [AdminDashboardController::class, "addNewTeacherPage"])->name('add-new-teacher-page');
+    Route::post('/add-new-teacher', [AdminDashboardController::class, "addNewTeacher"])->name('add-new-teacher');
+    Route::get('/update-teacher-page/{teacher}', [AdminDashboardController::class, "updateTeacherPage"])->name('update-teacher-page');
+    Route::post('/update-teacher/{teacher}', [AdminDashboardController::class, "updateTeacher"])->name('update-teacher');
+    Route::get('/delete-teacher/{teacher}', [AdminDashboardController::class, "deleteTeacher"])->name('delete-teacher');
+    Route::post('/course-register', [AdminDashboardController::class, "courseRegister"])->name('course-register');
+
 });
 
 
@@ -142,9 +164,23 @@ Route::prefix('/administration')->group(function () {
 Route::prefix('/academic')->group(function () {
     Route::prefix('/eee')->group(function () {
         Route::get('/cse', function () {
-            return view('cse');
+            $Head = Teacher::where('is_head', 1)
+            ->where('head_department', 'Department of Computer Science and Engineering')
+            ->first();
+            return view('cse', ['Head'=>$Head]);
         })->name('cse');
-
+        Route::get('/ce', function () {
+            $Head = Teacher::where('is_head', 1)
+            ->where('head_department', 'Department of Civil Engineering')
+            ->first();
+            return view('ce', ['Head'=>$Head]);
+        })->name('ce');
+        Route::get('/me', function () {
+            $Head = Teacher::where('is_head', 1)
+            ->where('head_department', 'Department of Mechanical Engineering')
+            ->first();
+            return view('me', ['Head'=>$Head]);
+        })->name('me');
     });
 
 });

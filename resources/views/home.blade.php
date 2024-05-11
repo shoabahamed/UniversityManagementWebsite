@@ -66,7 +66,7 @@
 				</div>
 				<div class="col-md-4 mt-3">
 						<div class="vc-message">
-								<img src="https://www.kuet.ac.bd/department/ME/images/faculty/105_2014-04-03_1396515487.jpg" alt="VC">
+								<img src="{{asset('/assets/images/teachers/vc.jpg')}}" alt="VC">
 								<div class="vc-details">
 										<p class="vc-name">Prof. Dr. Mihir Ranjan Halder</p>
 										<p class="vc-designation">Vice-Chancellor</p>

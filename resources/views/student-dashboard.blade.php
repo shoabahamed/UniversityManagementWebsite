@@ -70,13 +70,10 @@
               <a class="nav-link" aria-current="page" href="{{route('home')}}">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#" data-target="Profile">Personal Profile</a>
+              <a class="nav-link" style="cursor: pointer" data-target="Profile">Profile</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#" data-target="Registration">Registration</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#" data-target="Result">Result</a>
+              <a class="nav-link" style="cursor: pointer" data-target="Registration">Registration</a>
             </li>
             <li class="nav-item">
               <form action="/logout" method="POST">
@@ -88,6 +85,8 @@
       </div>
     </div>
   </nav>
+
+
   
  
   <div class="container my-4">
@@ -104,7 +103,7 @@
                   <span class="info-label">Roll Number:</span> {{$user['roll']}}
               </div>
                 <div class="info-item">
-                    <span class="info-label">Mobile Number:</span> {{$userDetails['mobile_no']}} <button class="btn btn-outline-success">Update</button>
+                    <span class="info-label">Mobile Number:</span> {{$userDetails['mobile_no']}} 
                 </div>
                 <div class="info-item">
                     <span class="info-label">Father's Name:</span> {{$userDetails['father_name']}}
@@ -113,7 +112,7 @@
                     <span class="info-label">Mother's Name:</span> {{$userDetails['mother_name']}}
                 </div>
                 <div class="info-item">
-                    <span class="info-label">Address:</span> {{$userDetails['address']}} <button class="btn btn-outline-success">Update</button>
+                    <span class="info-label">Address:</span> {{$userDetails['address']}} 
                 </div>
                 <div class="info-item">
                     <span class="info-label">Hall Name:</span> {{$userDetails['hall_name']}}
@@ -130,15 +129,15 @@
                 <div class="info-item">
                     <span class="info-label">Password:</span> ********
                 </div>
+                <div class='d-flex justify-content-center'>
+                  <a href="{{route('update-user-information-page',  ['user' => $user->id])}}" class="btn btn-outline-success">Update User</a>
+                </div>
             </div>
         </div>
     </div>
 
     <div class="section d-none" id="Registration">
       registration Section
-    </div>
-    <div class="section d-none" id="Result">
-      Result 
     </div>
   </div>
 

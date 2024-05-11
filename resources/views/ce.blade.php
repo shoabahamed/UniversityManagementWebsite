@@ -81,13 +81,13 @@
               </div>
               <div class="carousel-inner border border-success border-2 rounded">
                 <div class="carousel-item active c-carousel-item" data-bs-interval="10000">
-                  <img src="/assets/images/gallery/dept_gallery/cse/1.jpg" class="d-block w-100  c-carousel-img" alt="...">
+                  <img src="/assets/images/gallery/dept_gallery/ce/1.jpg" class="d-block w-100  c-carousel-img" alt="...">
                 </div>
                 <div class="carousel-item c-carousel-item" data-bs-interval="2000">
-                  <img src="/assets/images/gallery/dept_gallery/cse/2.jpg" class="d-block w-100 c-carousel-img" alt="...">
+                  <img src="/assets/images/gallery/dept_gallery/ce/2.jpg" class="d-block w-100 c-carousel-img" alt="...">
                 </div>
                 <div class="carousel-item c-carousel-item">
-                  <img src="/assets/images/gallery/dept_gallery/cse/3.jpg" class="d-block w-100 c-carousel-img" alt="...">
+                  <img src="/assets/images/gallery/dept_gallery/ce/3.jpg" class="d-block w-100 c-carousel-img" alt="...">
                 </div>
               </div>
               <button class="carousel-control-prev" type="button" data-bs-target="#hero-section" data-bs-slide="prev">

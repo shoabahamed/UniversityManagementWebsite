@@ -2,18 +2,40 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Course;
 use App\Models\Notice;
+use App\Models\Teacher;
 use App\Models\UserDetail;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+
+use function PHPSTORM_META\map;
 use Illuminate\Foundation\Auth\User;
 
 class AdminDashboardController extends Controller
 {
-    public function getAdminDashBoard(){
+    public function getAdminDashBoard(Request $request){
         $notices = Notice::latest()->take(10)->get();
-        return view('admin-dashboard', ["notices"=> $notices]);
+        $teachersQuery = Teacher::query();
+    
+        // Filter based on role if selected
+        if ($request->has('role') && in_array($request->role, ['deans', 'heads'])) {
+            if ($request->role == 'deans') {
+                $teachersQuery->where('is_dean', true);
+            } elseif ($request->role == 'heads') {
+                $teachersQuery->where('is_head', true);
+            }
+        }
+    
+        $teachers = $teachersQuery->latest()->take(10)->get();
+    
+        $selectedSection = $request->selected_section ?? 'Notice'; // Get the selected section's ID from the request, default to 'Notice'
+    
+        return view('admin-dashboard', ["notices"=> $notices, "teachers" => $teachers, "selectedSection" => $selectedSection]);
     }
+    
+    
+    
 
     public function addNewNoticePage(){
         return view('add-new-notice-page');
@@ -92,5 +114,144 @@ class AdminDashboardController extends Controller
         return redirect('/admin-dashboard');
         
     }
+
+
+    public function addNewTeacherPage(){
+        return view('add-new-teacher-page');
+    }
+
+    public function addNewTeacher(Request $request){
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required|email',
+            'dept' => "required",
+            'image_path' => 'required|image|mimes:jpeg,png,jpg,gif',
+            'phone' => 'required',
+            'fax' => 'required',
+            'is_dean' => 'required',
+            'is_head' => 'required',
+            'role' => 'required'
+        ]);
+        
+
+        $imageName = '';
+        // Handle image upload
+        if ($request->hasFile('image_path')) {
+            $image = $request->file('image_path');
+            $imageName = $image->getClientOriginalName(); 
+            $image->move(public_path('assets/images/teachers'), $imageName);
+        }
+
+        $teacher = new Teacher();
+        $teacher->name = $request->input('name');
+        $teacher->dept = $request->input('dept');
+        $teacher->image_path = $imageName;
+        $teacher->is_head = $request->input('is_head');
+        $teacher->is_dean = $request->input('is_dean');
+        $teacher->role = $request->input('role');
+        $teacher->email = $request->input('email');
+        $teacher->phone = $request->input('phone');
+        $teacher->fax = $request->input('fax');
+        $teacher->dean_faculty = $request->input('dean_faculty', NULL);
+        $teacher->head_department = $request->input('head_department', NULL);
+        $teacher->save();
+
+
+        return redirect('/admin-dashboard?selected_section=Teacher')->with('success', 'Teacher added successfully.');
+    }
+
+    public function updateTeacherPage(Teacher $teacher){
+        return view("update-teacher-page", ['teacher'=>$teacher]);
+    }
+
+    public function updateTeacher(Teacher $teacher, Request $request){
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required|email',
+            'dept' => "required",
+            'image_path' => 'image|mimes:jpeg,png,jpg,gif',
+            'phone' => 'required',
+            'fax' => 'required',
+            'role' => 'required'
+        ]);
+
+        $imageName = $teacher->image_path;
+        // Handle image upload
+        if ($request->hasFile('image_path')) {
+            $image = $request->file('image_path');
+            $imageName = $image->getClientOriginalName(); 
+            $image->move(public_path('assets/images/teachers'), $imageName);
+        }
+        
+        $teacher->name = $request->input('name');
+        $teacher->dept = $request->input('dept');
+        $teacher->image_path = $imageName;
+        $teacher->role = $request->input('role');
+        $teacher->email = $request->input('email');
+        $teacher->phone = $request->input('phone');
+        $teacher->fax = $request->input('fax');
+
+        if ($request->filled('is_dean') && $request->input('is_dean')==1) {
+            #if is_dean is true that means that a normal teacher wants to be updated to dean
+            $chosenFaculty = $request->input('dean_faculty');
+            $currentDean = Teacher::where('is_dean', 1)
+                                    ->where('dean_faculty', $chosenFaculty)
+                                    ->first();
+            $currentDean->is_dean = 0;
+            $currentDean->dean_faculty = NULL;
+            $currentDean->save();
+
+        } 
+
+        if ($request->filled('is_head') && $request->input('is_head')==1) {
+            #if is_head is true that means that a normal teacher wants to be updated to head
+            $chosenDepartment = $request->input('head_department');
+            $currentHead = Teacher::where('is_head', 1)
+                                    ->where('head_department', $chosenDepartment)
+                                    ->first();
+            $currentHead->is_head = 0;
+            $currentHead->head_department = NULL;
+            $currentHead->save();
+
+        } 
+        $teacher->is_head = $request->input('is_head', $teacher->is_head);
+        $teacher->is_dean = $request->input('is_dean', $teacher->is_dean);
+        $teacher->dean_faculty = $request->input('dean_faculty', $teacher->dean_faculty);
+        $teacher->head_department = $request->input('head_department', $teacher->head_faculty);
+
+
+        $teacher->save();
+
+        return redirect('/admin-dashboard?selected_section=Teacher')->with('success', 'Teacher uploaded successfully.');
+    }
     
+    public function deleteTeacher(Teacher $teacher){
+        $teacher->delete();
+        return redirect('/admin-dashboard?selected_section=Teacher')->with('success', 'Teacher deleted successfully.');
+    }
+
+
+    public function courseRegister(Request $request){
+        
+        // Validate the incoming request data
+        $validatedData = $request->validate([
+            'course_dept' => 'required|string',
+            'course_code' => 'required|string|max:4', // Adjust validation as needed
+            'course_name' => 'required|string',
+            'course_score' => 'required|numeric',
+        ]);
+
+        // Create and save the course
+        $course = new Course();
+        $course->course_dept = $validatedData['course_dept'];
+        $course->course_code = $validatedData['course_code'];
+        $course->course_name = $validatedData['course_name'];
+        $course->course_score = $validatedData['course_score'];
+        $course->save();
+
+        $request->session()->flash('success', 'Course created successfully');
+
+        return redirect('/admin-dashboard?selected_section=Course Reg');
+    }
+
 }

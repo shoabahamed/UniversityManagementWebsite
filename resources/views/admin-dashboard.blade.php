@@ -69,7 +69,6 @@
     .form-group{
       margin-bottom: 1rem;
     }
-
     .teacher-card {
       border: 2px solid #006400; /* Dark green border */
       margin-bottom: 20px;
@@ -77,20 +76,22 @@
       border-radius: 10px;
       background-color: #fff;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      height: 500px;
     }
     .teacher-card img {
       border-radius: 50%;
-      max-width: 100px;
+      max-width: 150px;
+      height: 150px;
+      margin-bottom: 10px;
     }
     .teacher-info {
-      margin-top: 15px;
+      margin-left: 20px;
     }
-
   </style>
 </head>
 <body>
  
-  <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+  <nav class="navbar navbar-expand-md navbar-dark bg-dark">
     <div class="container-fluid">
       <!-- Logo with Navbar Brand -->
       <a class="navbar-brand d-flex flex-row align-items-center" href="{{route('home')}}">
@@ -117,13 +118,16 @@
               <a class="nav-link" aria-current="page" href="{{route('home')}}">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#notices" data-target="Notice">Notices</a>
+              <a class="nav-link" style="cursor: pointer" data-target="Notice">Notices</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#register" data-target="Registration">Register User</a>
+              <a class="nav-link" style="cursor: pointer" data-target="Registration">Register User</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#teachers" data-target="Teacher">Teachers</a>
+              <a class="nav-link" style="cursor: pointer" data-target="Course Reg">Register Course</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" style="cursor: pointer" data-target="Teacher">Teachers</a>
             </li>
             <li class="nav-item">
               <form action="/logout" method="POST">
@@ -264,49 +268,106 @@
       </div>
     </div>
 
-    <div class="section d-none" id="Teacher">
-      <div class="container">
-        <h2 class="mt-5 mb-4">Meet Our Teachers</h2>
-        <div class="row">
-          <div class="col-md-4">
-            <div class="teacher-card">
-              <img src="assets/images/teachers/eee_dean.jpg" alt="Teacher 1">
-              <div class="teacher-info">
-                <h4>Teacher Name 1</h4>
-                <p><strong>Department:</strong> Department Name</p>
-                <p><strong>Phone:</strong> Phone Number</p>
-                <p><strong>Email:</strong> example@example.com</p>
-                <p><strong>Fax:</strong> Fax Number</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="teacher-card">
-              <img src="teacher2.jpg" alt="Teacher 2">
-              <div class="teacher-info">
-                <h4>Teacher Name 2</h4>
-                <p><strong>Department:</strong> Department Name</p>
-                <p><strong>Phone:</strong> Phone Number</p>
-                <p><strong>Email:</strong> example@example.com</p>
-                <p><strong>Fax:</strong> Fax Number</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="teacher-card">
-              <img src="teacher3.jpg" alt="Teacher 3">
-              <div class="teacher-info">
-                <h4>Teacher Name 3</h4>
-                <p><strong>Department:</strong> Department Name</p>
-                <p><strong>Phone:</strong> Phone Number</p>
-                <p><strong>Email:</strong> example@example.com</p>
-                <p><strong>Fax:</strong> Fax Number</p>
-              </div>
+    <div class="section d-none" id="Course Reg">
+      @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+      @endif
+
+      @if(session('success'))
+        <div class="alert alert-success" id="successMessage" role="alert">
+            {{ session('success') }}
+        </div>
+      @endif
+      <div class="row justify-content-center">
+        <div class="col-md-8">
+          <div class="card">
+            <div class="card-header">Add Course</div>
+            <div class="card-body">
+              <form action="{{route('course-register')}}" method="POST" enctype="multipart/form-data">
+                @csrf
+                <input type="hidden" name="selected_section" value="Course Reg">
+                <div class="form-group">
+                  <label for="course_dept" class="form-label">Course Department</label>
+                  <select name="course_dept" class="form-control" id="course_dept" required>
+                      <option value="">Select Department</option>
+                      <option value="chem">Department of Chemistry</option>
+                      <option value="math">Department of Mathematics</option>
+                      <option value="eee">Department of Electrical and Electronic Engineering</option>
+                      <option value="cse">Department of Computer Science and Engineering</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="course_code">Course Code (4 digit number)</label>
+                  <input type="number" class="form-control" id="course_code" name="course_code" placeholder="Enter course code" required>
+                </div>
+                <div class="form-group">
+                  <label for="course_name">Course Name</label>
+                  <input type="text" class="form-control" id="course_name" name="course_name" placeholder="Enter course name" required>
+                </div>
+                <div class="form-group">
+                  <label for="course_score">Course Score (floating number)</label>
+                  <input type="number" step="0.01" class="form-control" id="course_score" name="course_score" placeholder="Enter course score" required>
+                </div>
+                <button type="submit" class="btn btn-outline-success btn-block">Add</button>
+              </form>
             </div>
           </div>
         </div>
       </div>
+        
     </div>
+
+    <div class="section d-none" id="Teacher">
+      <div class="container">
+          <h2 class="text-center display-5" style="color: #006400;">All Teachers</h2>
+          <div class="d-flex justify-content-center mt-4">
+            <a class="btn btn-outline-success" href="{{route('add-new-teacher-page')}}">Add New Teacher</a>
+          </div>
+          <div class="d-flex justify-content-center mt-4">
+            <form action="{{ route('admin-dashboard') }}" method="GET">
+              <input type="hidden" name="selected_section" value="Teacher"> <!-- Add hidden input field to store the selected section's ID -->
+              <label for="role">Filter by Role:</label>
+              <select name="role" id="role">
+                  <option value="">All</option>
+                  <option value="deans" @if(request('role') == 'deans') selected @endif>Deans</option>
+                  <option value="heads" @if(request('role') == 'heads') selected @endif>Heads</option>
+              </select>
+              <button type="submit" class="btn btn-outline-primary">Apply Filter</button>
+          </form>
+          
+          </div>
+          <div class="row mt-4">
+              @foreach($teachers as $teacher)
+                  <div class="col-md-3 col-sm-12">
+                      <div class="teacher-card d-flex flex-column justify-content-between">
+                          <div class="d-flex justify-content-center">             
+                              <img src="assets/images/teachers/{{$teacher->image_path}}" alt="Teacher">
+                          </div>
+                          <div class="teacher-info">
+                              <h4>{{ $teacher->name }}</h4>
+                              <p><strong>Department:</strong> {{ $teacher->dept }}</p>
+                              <p><strong>Phone:</strong> {{ $teacher->phone }}</p>
+                              <p><strong>Email:</strong> {{ $teacher->email }}</p>
+                              <p><strong>Fax:</strong> {{ $teacher->fax }}</p>
+                          </div>
+                          <div class="d-flex justify-content-around">
+                            <a href="{{ route('update-teacher-page', ['teacher' => $teacher->id]) }}" class="btn btn-outline-success">Update</a>          
+                            <a  href="{{ route('delete-teacher', ['teacher' => $teacher->id]) }}" class="btn btn-outline-danger @if($teacher->is_dean == 1 || $teacher->is_head == 1) d-none @endif">Delete</a>
+                          </div>
+                      </div>
+                  </div>
+              @endforeach
+          </div>
+      </div>
+  </div>
+  
+    
 
   </div>
 
@@ -328,6 +389,26 @@
         targetSection.classList.remove('d-none');
       });
     });
+
+    document.addEventListener('DOMContentLoaded', function() {
+        const selectedSectionId = '{{ $selectedSection }}';
+        const selectedSection = document.getElementById(selectedSectionId);
+        if (selectedSection) {
+            // Hide all sections first
+            document.querySelectorAll('.section').forEach(section => {
+                section.classList.add('d-none');
+            });
+            // Display the selected section
+            selectedSection.classList.remove('d-none');
+        }
+    });
+
+
+    // Hide the success message after 5 seconds
+    setTimeout(function() {
+        document.getElementById('successMessage').style.display = 'none';
+    }, 5000);
+
   </script>
 
 </body>

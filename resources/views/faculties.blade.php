@@ -44,17 +44,17 @@
               </ul>
               <hr>
               <h5 class="names">Contancts</h5>
-              <p class="card-text mb-1">	Prof. Dr. Quazi Sazzad Hossain</p>
+              <p class="card-text mb-1">	{{$ceDean->name}}</p>
               <p class="card-text mb-1">Dean, Faculty of Civil Engineering</p>
-              <p class="card-text mb-1">Email: <a href="mailto:johndoe@example.com">deance@kuet.ac.bd</a></p>
-              <p class="card-text mb-1">Phone: +1234567890</p>
-              <p class="card-text mb-1">Fax: +1234567890</p>
+              <p class="card-text mb-1">Email: <a href="#">{{$ceDean->email}}</a></p>
+              <p class="card-text mb-1">Phone: +{{$ceDean->phone}}</p>
+              <p class="card-text mb-1">Fax: +{{$ceDean->fax}}</p>
           </div>
           <div class="col-md-4 mt-3">
               <div class="message">
-                  <img src="https://www.kuet.ac.bd/kuet-admin/messageimage/dean_ce_sazzad.jpg" alt="">
+                  <img src="/assets/images/teachers/{{$ceDean->image_path}}" alt="">
                   <div class="details">
-                      <p class="names">Prof. Dr. Quazi Sazzad Hossain</p>
+                      <p class="names">{{$ceDean->name}}</p>
                       <p class="designation">Dean of Civil Enginerring</p>
                       <p>
                           "Welcome to the Faculty of Civil Engineering home page!
@@ -92,17 +92,17 @@
               </ul>
               <hr>
               <h5 class="names">Contancts</h5>
-              <p class="card-text mb-1">Prof. Dr. Md. Shahjahan</p>
+              <p class="card-text mb-1">{{$eeeDean->name}}</p>
               <p class="card-text mb-1">Dean, Faculty of Electrical & Electronic Engineering</p>
-              <p class="card-text mb-1">Email: <a href="mailto:johndoe@example.com">deance@kuet.ac.bd</a></p>
-              <p class="card-text mb-1">Phone	:	PABX: +02477733351~7 Ext. 777</p>
-              <p class="card-text mb-1">Fax	:	+8802477733303</p>
+              <p class="card-text mb-1">Email: <a href="#">{{$eeeDean->email}}</a></p>
+              <p class="card-text mb-1">Phone	:	+{{$eeeDean->phone}}</p>
+              <p class="card-text mb-1">Fax	:	+{{$eeeDean->fax}}</p>
           </div>
           <div class="col-md-4 mt-3">
               <div class="message">
-                  <img src="https://www.kuet.ac.bd/kuet-admin/messageimage/dean_eee.jpg" alt="" class="circle">
+                  <img src="/assets/images/teachers/{{$eeeDean->image_path}}" alt="" class="circle">
                   <div class="details">
-                      <p class="names">Prof. Dr. Md. Shahjahan</p>
+                      <p class="names">{{$eeeDean->name}}</p>
                       <p class="designation">Dean of EEE</p>
                       <p>
                           "Welcome you for visiting our Faculty of Electrical and Electronic Engineering website. We are one of the major Faculties in Khulna University of Engineering and Technology (KUET)"
@@ -153,17 +153,17 @@
               </ul>
               <hr>
               <h5 class="names">Contancts</h5>
-              <p class="card-text mb-1">Prof. Dr. Md. Shahidul Islam</p>
+              <p class="card-text mb-1">{{$meDean->name}}</p>
               <p class="card-text mb-1">Dean, Mechanical Engineering</p>
-              <p class="card-text mb-1">Email: <a href="mailto:johndoe@example.com">deance@kuet.ac.bd</a></p>
-              <p class="card-text mb-1">Phone	:	PABX: +02477733351~7 Ext. 788</p>
-              <p class="card-text mb-1">Fax	:	+8802477733303</p>
+              <p class="card-text mb-1">Email: <a href="mailto:johndoe@example.com">{{$meDean['email']}}</a></p>
+              <p class="card-text mb-1">Phone	:	+{{$meDean->phone}}</p>
+              <p class="card-text mb-1">Fax	:	+{{$meDean->fax}}</p>
           </div>
           <div class="col-md-4 mt-3">
               <div class="message">
-                  <img src="https://www.kuet.ac.bd/kuet-admin/messageimage/dean_me.jpg" alt="">
+                  <img src="/assets/images/teachers/{{$meDean->image_path}}" alt="">
                   <div class="details">
-                      <p class="names">Prof. Dr. Md. Shahidul Islam</p>
+                      <p class="names">{{$meDean->name}}</p>
                       <p class="designation">Dean of Mechanical Engineering</p>
                       <p>
                           "Welcome to the Faculty of Mechanical Engineering of KUET. There are seven departments namely, Department of Mechanical Engineering (ME), Department of Industrial Engineering and"

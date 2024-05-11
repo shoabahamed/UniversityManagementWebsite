@@ -72,7 +72,7 @@
               <li class="dropstart">
                 <a href="#" class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown" data-bs-auto-close="outside">Faculty of Civil Engineering</a>
                 <ul class="dropdown-menu dropdown-menu-dark">
-                  <li><a class="dropdown-item" href="{{route('cse')}}"> Department of Civil Engineering</a></li>
+                  <li><a class="dropdown-item" href="{{route('ce')}}"> Department of Civil Engineering</a></li>
                   <li><a class="dropdown-item" href="{{route('cse')}}"> Department of Urban and Regional Planning</a></li>
                   <li><a class="dropdown-item" href="{{route('cse')}}"> Department of Building Engineering and Construction Management</a></li>
                   <li><a class="dropdown-item" href="{{route('cse')}}"> Department of Architecture</a></li>
@@ -95,7 +95,7 @@
               <li class="dropstart">
                 <a href="#" class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown" data-bs-auto-close="outside">Faculty of Machanical Engineering</a>
                 <ul class="dropdown-menu dropdown-menu-dark">
-                  <li><a class="dropdown-item" href="{{route('cse')}}"> Department of Machanical Engineering</a></li>
+                  <li><a class="dropdown-item" href="{{route('me')}}"> Department of Machanical Engineering</a></li>
                   <li><a class="dropdown-item" href="{{route('cse')}}"> Department of Industrial Engineering and ManageMent</a></li>
                   <li><a class="dropdown-item" href="{{route('cse')}}"> Department of Energy Science and Engineering</a></li>
                   <li><a class="dropdown-item" href="{{route('cse')}}"> Department of Leather Engineering</a></li>
