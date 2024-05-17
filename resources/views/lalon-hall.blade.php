@@ -52,15 +52,17 @@
     
       <div class="row">
         <div class="col-md-8">
-          <img src="{{asset('./assets/images/halls/FAZLUL.png')}}" class="hall-picture border border-success border-2 rounded" alt="University Hall">
+          <img src="{{asset('./assets/images/halls/lalon.jpg')}}" class="hall-picture border border-success border-2 rounded" alt="University Hall">
           <p>
-            Fazlul Haque Hall is the most oldest and historical hall of Khulna University of Engineering and Technology. The name goes after the famous patriot Sher-e-Bangla A.K Fazlul Haque. The residential life of this hall offers a wide variety of services designed to support students in their academic and personal success.<br>
+            Lalan Shah Hall is one of the oldest residential halls of Khulna University of Engineering & Technology (KUET), Khulna. The hall is an emblem of quality engineering education and contributing not only our nation but also worldwide human beings since 1967. It is founded in 1975 after the name of famous Bengali Baul devotee - Fakir Lalan Shah. The hall is extenuating the demand of a good number of residential students. Every year the nation is being provided quality engineers from this hall. It is situated in the green environment of KUET campus beside the central mosque and the new academic building.180 undergraduate students from various departments reside in the hall. Besides around 180 students are attached to this hall.
 
-            The hall is organized around the vital theme of students' engagement-think volunteering, social entrepreneurship, civic spirit, and the like. In this hall, there are forty one residential rooms and few other common rooms. One of the attractions of this hall is its library cum study room named Sejuti where it has a collection of around 2000 local and foreign books. The library is enriched with novel, story, poetry, autobiography and other types of books.<br>
-
-            The hall has also got a common room where students can play many indoor games such as table tennis, chess, carom etc. Besides, indoor games competition on various events is also held in every year which imparts entertainment and refreshment among the students. There is also an arrangement for the students to participate in outdoor games. Last year the hall won a fair play trophy in football tournament showing adequate performance. A beautiful garden with numerous types of flowers resides in front of the hall. Students of this hall are very much enthusiastic and energetic.
+            <br>
+            There is a large dining room inside the hall and all the students of the hall take their lunch and supper smoothly in this dining room. There are forty one (41) residential rooms, one guest room, and a library cum study room in this hall. There are 1857 books in the hall library and some of those books are written by foreign writers. The study room is kept open till 11:30 pm on weekdays and general students can study without any disturbance. Also a common room of this hall is providing the facilities for watching television and playing indoor games.<br>
+            
+            There is a strong "Hall Committee" with dedicated students to manage the various activities of the hall voluntarily. The administrative works of the hall are carried out by a Provost and two Assistant Provosts appointed by the authority of KUET. A caretaker cum hall assistant works for the sake of student affairs and maintains the accounts of the hall. There are a beautiful garden and large playground inside the hall territory. We hope that Lalan Shah Hall will help to make a great nation.
+            
           </p>
-          <!-- Add your 200 words text here -->
+          
         </div>
         <div class="col-md-4">
           <div class="provost-info">

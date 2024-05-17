@@ -156,7 +156,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="fax" class="form-label">Fax</label>
-                    <input type="number" name="fax" class="form-control" id="fax" placeholder="Fax">
+                    <input type="number" name="fax" class="form-control" id="fax" placeholder="Fax" required>
                 </div>
                 <button type="submit" class="btn btn-outline-success login-btn">Add</button>
             </form>

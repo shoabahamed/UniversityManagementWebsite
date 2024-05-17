@@ -143,6 +143,11 @@
 
   <div class="container my-4">
     <div class="section" style="background:#f8f9fa;" id="Notice">
+      @if(session('success'))
+        <div class="alert alert-success" id="successMessage" role="alert">
+            {{ session('success') }}
+        </div>
+      @endif
       <h1 class="text-center display-5" style="color: #006400;">All Notices</h1>
       <div class="d-flex justify-content-center mt-4">
         <a class="btn btn-outline-success" href="{{route('add-new-notice-page')}}">Add New Notice</a>
@@ -152,7 +157,7 @@
           <div class="col-10 offset-1 notices align-items-center border-bottom border-success border-2 py-4">
             <div class="fs-5 fw-bold">{{$notice->created_at->format('d M Y')}}</div>
             <div class="fs-5">{{$notice['title']}}</div>
-            <a href="assets/pdf/notice/{{$notice['file_path']}}" class="btn btn-outline-success border fs-5">Download</a>
+            <a href="{{ route('delete-notice', ['notice' => $notice->id]) }}" class="btn btn-outline-danger border fs-5">Delete</a>
           </div>
         @endforeach
       </div>

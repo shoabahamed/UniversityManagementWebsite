@@ -89,6 +89,7 @@ Route::prefix('/admin-dashboard')->middleware(["isAdmin"])->group(function () {
     Route::get('', [AdminDashboardController::class, "getAdminDashBoard"])->name('admin-dashboard');
     Route::get('/add-new-notice-page', [AdminDashboardController::class, 'addNewNoticePage'])->name('add-new-notice-page');
     Route::post('/add-new-notice', [AdminDashboardController::class, 'addNewNotice'])->name('add-new-notice');
+    Route::get('/delete-notice/{notice}', [AdminDashboardController::class, 'deleteNotice'])->name('delete-notice');
     Route::post('/register', [AdminDashboardController::class, 'userRegister'])->name('user-register');
     Route::get('/add-new-teacher-page', [AdminDashboardController::class, "addNewTeacherPage"])->name('add-new-teacher-page');
     Route::post('/add-new-teacher', [AdminDashboardController::class, "addNewTeacher"])->name('add-new-teacher');
@@ -135,7 +136,7 @@ Route::prefix('/administration')->group(function () {
         })->name('fuzlul-hall');
 
         Route::get('/lalon-hall', function () {
-            return view('fuzlul-hall');
+            return view('lalon-hall');
         })->name('lalon-hall');
 
         Route::get('/rashid-hall', function () {

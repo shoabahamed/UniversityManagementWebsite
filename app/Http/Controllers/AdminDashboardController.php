@@ -29,7 +29,7 @@ class AdminDashboardController extends Controller
     
         $teachers = $teachersQuery->latest()->take(10)->get();
     
-        $selectedSection = $request->selected_section ?? 'Notice'; // Get the selected section's ID from the request, default to 'Notice'
+        $selectedSection = $request->selected_section ?? 'Notice';
     
         return view('admin-dashboard', ["notices"=> $notices, "teachers" => $teachers, "selectedSection" => $selectedSection]);
     }
@@ -60,6 +60,11 @@ class AdminDashboardController extends Controller
         ]);
 
         return redirect('admin-dashboard')->with('success', 'Notice added successfully.');
+    }
+
+    public function deleteNotice(Notice $notice){
+        $notice->delete();
+        return redirect('/admin-dashboard?selected_section=Notice')->with('success', 'Notice deleted successfully.');
     }
 
     public function userRegister(Request $request){
@@ -146,6 +151,31 @@ class AdminDashboardController extends Controller
         $teacher->name = $request->input('name');
         $teacher->dept = $request->input('dept');
         $teacher->image_path = $imageName;
+
+        if ($request->filled('is_dean') && $request->input('is_dean')==1) {
+            #if is_dean is true that means that a normal teacher wants to be updated to dean
+            $chosenFaculty = $request->input('dean_faculty');
+            $currentDean = Teacher::where('is_dean', 1)
+                                    ->where('dean_faculty', $chosenFaculty)
+                                    ->first();
+            $currentDean->is_dean = 0;
+            $currentDean->dean_faculty = NULL;
+            $currentDean->save();
+
+        } 
+
+        if ($request->filled('is_head') && $request->input('is_head')==1) {
+            #if is_head is true that means that a normal teacher wants to be updated to head
+            $chosenDepartment = $request->input('head_department');
+            $currentHead = Teacher::where('is_head', 1)
+                                    ->where('head_department', $chosenDepartment)
+                                    ->first();
+            $currentHead->is_head = 0;
+            $currentHead->head_department = NULL;
+            $currentHead->save();
+
+        } 
+
         $teacher->is_head = $request->input('is_head');
         $teacher->is_dean = $request->input('is_dean');
         $teacher->role = $request->input('role');
@@ -214,6 +244,7 @@ class AdminDashboardController extends Controller
             $currentHead->save();
 
         } 
+
         $teacher->is_head = $request->input('is_head', $teacher->is_head);
         $teacher->is_dean = $request->input('is_dean', $teacher->is_dean);
         $teacher->dean_faculty = $request->input('dean_faculty', $teacher->dean_faculty);
