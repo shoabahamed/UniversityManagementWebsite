@@ -1,6 +1,8 @@
 <?php
 
+use Carbon\Carbon;
 use App\Models\User;
+use App\Models\Event;
 use App\Models\Notice;
 use App\Models\Teacher;
 use Illuminate\Http\Request;
@@ -25,7 +27,8 @@ use App\Http\Controllers\StudentDashboardController;
 
 Route::get('/', function () {
     $notices = Notice::latest()->take(6)->get();
-    return view('home', ["notices"=> $notices]);
+    $events = Event::where('date', '>', Carbon::today())->latest()->take(4)->get();
+    return view('home', ["notices"=> $notices, "events"=>$events]);
 })->name("home");
 
 Route::get('/faqs', function () {
@@ -61,6 +64,11 @@ Route::get('/notice', function () {
     return view('notice', ["notices"=> $notices]);
 })->name('notice');
 
+Route::get('/event', function () {
+    $events = Event::where('date', '>', Carbon::today())->latest()->get();
+    return view('events', ["events"=> $events]);
+})->name('event');
+
 Route::get('/loginPage', [UserController::class, "showLoginPage"])->name('loginPage')->middleware("isLoggedIn");
 
 Route::post('/login', [UserController::class, 'userLogin']);
@@ -90,6 +98,11 @@ Route::prefix('/admin-dashboard')->middleware(["isAdmin"])->group(function () {
     Route::get('/add-new-notice-page', [AdminDashboardController::class, 'addNewNoticePage'])->name('add-new-notice-page');
     Route::post('/add-new-notice', [AdminDashboardController::class, 'addNewNotice'])->name('add-new-notice');
     Route::get('/delete-notice/{notice}', [AdminDashboardController::class, 'deleteNotice'])->name('delete-notice');
+    Route::get('/add-new-event-page', [AdminDashboardController::class, 'addNewEventePage'])->name('add-new-event-page');
+    Route::post('/add-new-event', [AdminDashboardController::class, 'addNewEvent'])->name('add-new-event');
+    Route::get('/update-event-page/{event}', [AdminDashboardController::class, 'updateEventPage'])->name('update-event-page');
+    Route::post('/update-event/{event}', [AdminDashboardController::class, 'updateEvent'])->name('update-event');
+    Route::get('/delete-event/{event}', [AdminDashboardController::class, 'deleteEvent'])->name('delete-event');
     Route::post('/register', [AdminDashboardController::class, 'userRegister'])->name('user-register');
     Route::get('/add-new-teacher-page', [AdminDashboardController::class, "addNewTeacherPage"])->name('add-new-teacher-page');
     Route::post('/add-new-teacher', [AdminDashboardController::class, "addNewTeacher"])->name('add-new-teacher');

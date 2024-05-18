@@ -87,6 +87,16 @@
     .teacher-info {
       margin-left: 20px;
     }
+
+    .event-card {
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 15px;
+            margin: 10px 0;
+        }
+        .event-card h5 {
+            color: #006400;
+        }
   </style>
 </head>
 <body>
@@ -121,6 +131,9 @@
               <a class="nav-link" style="cursor: pointer" data-target="Notice">Notices</a>
             </li>
             <li class="nav-item">
+              <a class="nav-link" style="cursor: pointer" data-target="Event">Events</a>
+            </li>
+            <li class="nav-item">
               <a class="nav-link" style="cursor: pointer" data-target="Registration">Register User</a>
             </li>
             <li class="nav-item">
@@ -142,12 +155,21 @@
   
 
   <div class="container my-4">
+    @if(session('success'))
+    <div class="alert alert-success" id="successMessage" role="alert">
+        {{ session('success') }}
+    </div>
+    @endif
+    @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+    @endif
     <div class="section" style="background:#f8f9fa;" id="Notice">
-      @if(session('success'))
-        <div class="alert alert-success" id="successMessage" role="alert">
-            {{ session('success') }}
-        </div>
-      @endif
       <h1 class="text-center display-5" style="color: #006400;">All Notices</h1>
       <div class="d-flex justify-content-center mt-4">
         <a class="btn btn-outline-success" href="{{route('add-new-notice-page')}}">Add New Notice</a>
@@ -163,16 +185,30 @@
       </div>
     </div>
 
+    <div class="section" style="background:#f8f9fa;" id="Event">
+      <h1 class="text-center display-5" style="color: #006400;">All Events</h1>
+      <div class="d-flex justify-content-center mt-4">
+        <a class="btn btn-outline-success" href="{{route('add-new-event-page')}}">Add New Event</a>
+      </div>
+
+      <div class="row mt-4">
+        @foreach($events as $event)
+            <div class="col-md-4 mb-3">
+                <div class="event-card  border-success border-2">
+                    <h5 class="card-title display-6">{{ $event->title }}</h5>
+                    <p class="card-text mt-3"><strong>Date:</strong> {{ $event->date->format('d M Y') }}</p>
+                    <p class="card-text"><strong>Location:</strong> {{ $event->location }}</p>
+                    <p class="card-text">{{ Str::limit($event->description, 100) }}</p>
+                    <a href="{{ route('update-event-page', ['event' => $event->id]) }}" class="btn btn-outline-success">Update</a>
+                    <a href="{{ route('delete-event', ['event' => $event->id]) }}" class="btn btn-outline-danger">Delete</a>
+                </div>
+            </div>
+        @endforeach
+
+      </div>
+    </div>
+
     <div class="section d-none" id="Registration">
-      @if ($errors->any())
-        <div class="alert alert-danger">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-      @endif
       <div class="row justify-content-center">
         <div class="col-md-8">
           <div class="card">
@@ -274,21 +310,6 @@
     </div>
 
     <div class="section d-none" id="Course Reg">
-      @if ($errors->any())
-        <div class="alert alert-danger">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-      @endif
-
-      @if(session('success'))
-        <div class="alert alert-success" id="successMessage" role="alert">
-            {{ session('success') }}
-        </div>
-      @endif
       <div class="row justify-content-center">
         <div class="col-md-8">
           <div class="card">

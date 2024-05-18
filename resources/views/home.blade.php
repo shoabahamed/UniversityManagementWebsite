@@ -94,6 +94,7 @@
 						<div class="widgets-title d-flex justify-content-center"><h2>Events&News</h2></div>
 						<div class='d-flex flex-column'>
 								<ul class="d-flex flex-column">
+									@foreach($events as $event)
 										<li>
 												<!-- Events -->
 												<div class="event-container">
@@ -101,63 +102,19 @@
 														<div class="date">
 																		<span>
 																				<!-- Day -->
-																				<div class="day">9</div>
+																				<div class="day"> {{ $event->date->format('d') }}</div>
 																				<!-- Month Short Form (first three letters) -->
-																				<div class="month">Apr</div>
+																				<div class="month">{{ $event->date->format('M') }}</div>
 																		</span>
 														</div>
 														<!-- Event-Description -->
-														<div class="event-text">First Annual Institute Day</div>
+														<div class="event-text">{{$event->title}}</div>
 												</div>
 										</li>
-										<li>
-												<div class="event-container">
-														<!-- Date -->
-														<div class="date">
-																				<span>
-																						<!-- Day -->
-																						<div class="day">12</div>
-																						<!-- Month Short Form (first three letters) -->
-																						<div class="month">Mar</div>
-																				</span>
-														</div>
-														<!-- Event-Description -->
-														<div class="event-text">Hackathon 2016</div>
-												</div>
-										</li>
-										<li>
-												<div class="event-container">
-														<!-- Date -->
-														<div class="date">
-																				<span>
-																						<!-- Day -->
-																						<div class="day">5</div>
-																						<!-- Month Short Form (first three letters) -->
-																						<div class="month">Mar</div>
-																				</span>
-														</div>
-														<!-- Event-Description -->
-														<div class="event-text text-wrap">Sports Festival Ventura 2016</div>
-												</div>
-										</li>
-										<li>
-												<div class="event-container">
-														<!-- Date -->
-														<div class="date">
-																				<span>
-																						<!-- Day -->
-																						<div class="day">26</div>
-																						<!-- Month Short Form (first three letters) -->
-																						<div class="month">Jan</div>
-																				</span>
-														</div>
-														<!-- Event-Description -->
-														<div class="event-text">Republic Day</div>
-												</div>
-										</li>
+									@endforeach
 								</ul>
 								<div class="d-flex justify-content-center">
-										<a href="{{route('notice')}}" class="btn btn-outline-success ">See More</a>
+										<a href="{{route('event')}}" class="btn btn-outline-success ">See More</a>
 								</div>  
 						</div>
 				</div>

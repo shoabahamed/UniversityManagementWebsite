@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Event;
 use App\Models\Course;
 use App\Models\Notice;
 use App\Models\Teacher;
 use App\Models\UserDetail;
 use Illuminate\Support\Str;
-use Illuminate\Http\Request;
 
+use Illuminate\Http\Request;
 use function PHPSTORM_META\map;
 use Illuminate\Foundation\Auth\User;
 
@@ -17,7 +18,7 @@ class AdminDashboardController extends Controller
     public function getAdminDashBoard(Request $request){
         $notices = Notice::latest()->take(10)->get();
         $teachersQuery = Teacher::query();
-    
+        $events = Event::all();
         // Filter based on role if selected
         if ($request->has('role') && in_array($request->role, ['deans', 'heads'])) {
             if ($request->role == 'deans') {
@@ -31,7 +32,10 @@ class AdminDashboardController extends Controller
     
         $selectedSection = $request->selected_section ?? 'Notice';
     
-        return view('admin-dashboard', ["notices"=> $notices, "teachers" => $teachers, "selectedSection" => $selectedSection]);
+        return view('admin-dashboard', ["notices"=> $notices,
+                 "teachers" => $teachers,
+                 "selectedSection" => $selectedSection,
+                 'events' => $events]);
     }
     
     
@@ -66,6 +70,56 @@ class AdminDashboardController extends Controller
         $notice->delete();
         return redirect('/admin-dashboard?selected_section=Notice')->with('success', 'Notice deleted successfully.');
     }
+
+
+    public function addNewEventePage(){
+        return view('add-new-event-page');
+    }
+
+    public function addNewEvent(Request $request){
+        $request->validate([
+            'title' => 'required|string|max:255',
+            'date' => 'required|date',
+            'location' => 'required|string|max:255',
+            'description' => 'required|string',
+        ]);
+
+        Event::create([
+            'title' => $request->title,
+            'date' => $request->date,
+            'location' => $request->location,
+            'description' => $request->description,
+        ]);
+
+       return redirect('/admin-dashboard?selected_section=Event')->with('success', 'Event added successfully successfully.');
+    }
+
+    public function updateEventPage(Event $event){
+        return view('update-event-page', ['event' => $event]);
+    }
+
+    public function updateEvent(Event $event, Request $request){
+        $request->validate([
+            'title' => 'required|string|max:255',
+            'date' => 'required|date',
+            'location' => 'required|string|max:255',
+            'description' => 'required|string',
+        ]);
+
+        $event->update([
+            'title' => $request->title,
+            'date' => $request->date,
+            'location' => $request->location,
+            'description' => $request->description,
+        ]);
+        return redirect('/admin-dashboard?selected_section=Event')->with('success', 'Event updated successfully.');
+    }
+
+    public function deleteEvent(Event $event){
+        $event->delete();
+        return redirect('/admin-dashboard?selected_section=Event')->with('success', 'Event deleted successfully.');
+    }
+
 
     public function userRegister(Request $request){
         $rules = [
