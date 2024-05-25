@@ -101,7 +101,7 @@
 </head>
 <body>
  
-  <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+  <nav class="navbar navbar-expand-xl navbar-dark bg-dark">
     <div class="container-fluid">
       <!-- Logo with Navbar Brand -->
       <a class="navbar-brand d-flex flex-row align-items-center" href="{{route('home')}}">

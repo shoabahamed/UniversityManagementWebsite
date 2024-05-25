@@ -64,7 +64,7 @@
         </div>
         <div class="col-md-4">
           <div class="provost-info">
-            <div class="card c-card">
+            <div class="card c-card border border-success border-2">
               <img src="{{asset('./assets/images/teachers/md_elias_uddin.jpg')}}" class="card-img-top" alt="Provost">
               <div class="card-body">
                 <h5 class="card-title"  style="color: #006400">Dr. Md. Elias Uddin</h5>
@@ -74,16 +74,16 @@
 
               </div>
             </div>
-            <div class="card c-card mt-3">
+            <div class="card c-card mt-3 border border-success border-2">
               <img src="{{asset('./assets/images/teachers/md_elias_uddin.jpg')}}" class="card-img-top" alt="Assistant Provost">
-              <div class="card-body">
+              <div class="card-body ">
                 <h5 class="card-title" style="color: #006400">Dr. Md. Elias Uddin</h5>
                 <p class="card-text">Assistant Provost</p>
                 <p class="card-text">Phone: 8427</p>
                 <p class="card-text">elias@le.kuet.ac.bd, elias.acct.du@gmail.com</p>
               </div>
             </div>
-            <div class="card c-card mt-3">
+            <div class="card c-card mt-3 border border-success border-2">
               <img src="{{asset('./assets/images/teachers/Ayan_Saha.jpg')}}" class="card-img-top" alt="Assistant Provost">
               <div class="card-body">
                 <h5 class="card-title"  style="color: #006400">Ayan Saha</h5>
