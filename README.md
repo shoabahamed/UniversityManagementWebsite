@@ -4,7 +4,6 @@ The University Management System is a dynamic web application developed for my C
 
 This system allows users to log in and access functionalities based on their roles as either admin or student. The primary goal of this project is to streamline administrative tasks and improve communication within the university community, ensuring that both students and faculty can easily manage their responsibilities.
 
-Here is a short demo video of the website
 
 # Features
 1. **<u>User Authentication:</u>** Users can log in with their credentials, ensuring secure access to the application.
@@ -27,3 +26,7 @@ Here is a short demo video of the website
 - **MySQL**: The database management system for storing application data.
 - **Composer**: Dependency manager for PHP, used to manage Laravel libraries.
 - **GitHub**: Version control platform for collaboration and code management.
+
+# LICENSE
+
+[MIT LICENSE](LICENSE)
