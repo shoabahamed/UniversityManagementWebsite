@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('teachers', function (Blueprint $table) {
             $table->id();
+            $table->unsignedInteger('teacher_roll')->unique();
             $table->string('name');
             $table->string('image_path');
             $table->string("dept");

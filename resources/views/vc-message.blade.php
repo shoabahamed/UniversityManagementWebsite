@@ -6,14 +6,12 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 
-    <link rel="dns-prefetch" href="//fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
 
 		<link rel="stylesheet" href="./css/general.css">
     <link rel="stylesheet" href="./css/footer.css">
 
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
-    <script src="https://kit.fontawesome.com/31b429dc0a.js" crossorigin="anonymous"></script>
+
     <style>
  
       .vc-message {
@@ -80,7 +78,7 @@
         <div class="col-md-10 c-message-container">
           <div class="vc-message rounded" style="background:#e3f9e0; box-shadow: 0 0 20px rgba(0,0,0,0.1);">
             <div class="image-container mb-2 pt-3 text-center">
-              <img src="https://www.kuet.ac.bd/department/ME/images/faculty/105_2014-04-03_1396515487.jpg" alt="VC Image" class="circle">
+              <img src="{{asset('/assets/images/teachers/vc.jpg')}}" alt="VC Image" class="circle">
               <p class="vc-name">Prof. Dr. Mihir Ranjan Halder</p>
               <p class="vc-designation">Vice-Chancellor</p>
             </div>

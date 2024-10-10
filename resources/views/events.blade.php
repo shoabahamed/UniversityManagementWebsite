@@ -6,14 +6,11 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 
-    <link rel="dns-prefetch" href="//fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
-
     <link rel="stylesheet" href="{{ asset('./css/footer.css') }}">
 
 
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
-    <script src="https://kit.fontawesome.com/31b429dc0a.js" crossorigin="anonymous"></script>
+
     <style>
         .event-card {
             border: 1px solid #ddd;
@@ -35,9 +32,6 @@
 
     <div class="container my-5" style="background:#f8f9fa;" id="Event">
         <h1 class="text-center display-5" style="color: #006400;">All Events</h1>
-        <div class="d-flex justify-content-center mt-4">
-          <a class="btn btn-outline-success" href="{{route('add-new-event-page')}}">Add New Event</a>
-        </div>
   
         <div class="row mt-4">
           @foreach($events as $event)

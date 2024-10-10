@@ -6,15 +6,14 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 
-    <link rel="dns-prefetch" href="//fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
+
 
 		<link rel="stylesheet" href="./css/general.css">
     <link rel="stylesheet" href="{{ asset('./css/footer.css') }}">
 
 
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
-    <script src="https://kit.fontawesome.com/31b429dc0a.js" crossorigin="anonymous"></script>
+   
     <style>
         .login-container {
             max-width: 600px;
@@ -55,6 +54,10 @@
                 <div class="mb-3">
                     <label for="name" class="form-label">Name</label>
                     <input type="text" name="name" class="form-control" id="name" placeholder="Name" required>
+                </div>
+                <div class="mb-3">
+                    <label for="teacher_roll" class="form-label">Roll</label>
+                    <input type="number" name="teacher_roll" class="form-control" id="teacher_roll" placeholder="Roll Number" required>
                 </div>
                 <div class="mb-3">
                   <label for="image" class="form-label">Upload Image</label>

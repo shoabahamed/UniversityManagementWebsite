@@ -4,16 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Home</title>
 
-    <link rel="dns-prefetch" href="//fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
     <link rel="stylesheet" href="./css/home.css">
 		<link rel="stylesheet" href="./css/general.css">
 		<link rel="stylesheet" href="./css/footer.css">
 
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
-    <script src="https://kit.fontawesome.com/31b429dc0a.js" crossorigin="anonymous"></script>
+
 </head>
 <body>
     {{-- navbar and carsouel --}}

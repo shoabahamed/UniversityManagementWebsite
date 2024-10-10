@@ -6,8 +6,6 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 
-    <link rel="dns-prefetch" href="//fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
 
 		<link rel="stylesheet" href="./css/general.css">
     <link rel="stylesheet" href="{{ asset('./css/footer.css') }}">
@@ -60,7 +58,7 @@
   </style>
 
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
-    <script src="https://kit.fontawesome.com/31b429dc0a.js" crossorigin="anonymous"></script>
+
   
 </head>
 <body>
@@ -70,7 +68,7 @@
 	  </header>
 
     <section class="container mt-4 mb-4">
-      <h1 class="text-center mb-4" style="color: #006400">Compute Science & Engineering</h1>
+      <h1 class="text-center mb-4" style="color: #006400">Civil Engineering</h1>
       <div class="row welcome-section align-items-start justify-content-around">
           <div class="col-md-7">
             <div id="hero-section" class="carousel slide" data-bs-ride="carousel">

@@ -1,6 +1,7 @@
 <?php
 
 use Carbon\Carbon;
+use App\Models\Hall;
 use App\Models\User;
 use App\Models\Event;
 use App\Models\Notice;
@@ -110,7 +111,10 @@ Route::prefix('/admin-dashboard')->middleware(["isAdmin"])->group(function () {
     Route::post('/update-teacher/{teacher}', [AdminDashboardController::class, "updateTeacher"])->name('update-teacher');
     Route::get('/delete-teacher/{teacher}', [AdminDashboardController::class, "deleteTeacher"])->name('delete-teacher');
     Route::post('/course-register', [AdminDashboardController::class, "courseRegister"])->name('course-register');
-
+    Route::get('/add-new-hall-page', [AdminDashboardController::class, "addNewHallPage"])->name('add-new-hall-page');
+    Route::post('/add-new-hall', [AdminDashboardController::class, 'addNewHall'])->name('add-new-hall');
+    Route::get('/update-hall-page/{hall}', [AdminDashboardController::class, 'updateHallPage'])->name('update-hall-page');
+    Route::post('/update-hall/{hall}', [AdminDashboardController::class, 'updateHall'])->name('update-hall');
 });
 
 
@@ -145,31 +149,38 @@ Route::prefix('/facilities')->group(function () {
 Route::prefix('/administration')->group(function () {
     Route::prefix('/office-of-provosts')->group(function () {
         Route::get('/fuzlul-hall', function () {
-            return view('fuzlul-hall');
+            $hall = Hall::with(['provost', 'assistantProvost1', 'assistantProvost2'])->where("hall_name", "Fazlul Haque Hall")->first();
+            return view('fuzlul-hall', ['hall'=>$hall]);
         })->name('fuzlul-hall');
 
         Route::get('/lalon-hall', function () {
-            return view('lalon-hall');
+            $hall = Hall::with(['provost', 'assistantProvost1', 'assistantProvost2'])->where("hall_name", "Lalan Shah Hall")->first();
+            return view('lalon-hall', ['hall'=>$hall]);
         })->name('lalon-hall');
 
         Route::get('/rashid-hall', function () {
-            return view('fuzlul-hall');
+            $hall = Hall::with(['provost', 'assistantProvost1', 'assistantProvost2'])->where("hall_name", "Fazlul Haque Hall")->first();
+            return view('fuzlul-hall', ['hall'=>$hall]);
         })->name('rashid-hall');
 
         Route::get('/umor-hall', function () {
-            return view('fuzlul-hall');
+            $hall = Hall::with(['provost', 'assistantProvost1', 'assistantProvost2'])->where("hall_name", "Fazlul Haque Hall")->first();
+            return view('fuzlul-hall', ['hall'=>$hall]);
         })->name('umor-hall');
 
         Route::get('/kaja-hall', function () {
-            return view('fuzlul-hall');
+            $hall = Hall::with(['provost', 'assistantProvost1', 'assistantProvost2'])->where("hall_name", "Fazlul Haque Hall")->first();
+            return view('fuzlul-hall', ['hall'=>$hall]);
         })->name('kaja-hall');
 
         Route::get('/bongo-hall', function () {
-            return view('fuzlul-hall');
+            $hall = Hall::with(['provost', 'assistantProvost1', 'assistantProvost2'])->where("hall_name", "Fazlul Haque Hall")->first();
+            return view('fuzlul-hall', ['hall'=>$hall]);
         })->name('bongo-hall');
 
         Route::get('/rokeya-hall', function () {
-            return view('fuzlul-hall');
+            $hall = Hall::with(['provost', 'assistantProvost1', 'assistantProvost2'])->where("hall_name", "Fazlul Haque Hall")->first();
+            return view('fuzlul-hall', ['hall'=>$hall]);
         })->name('rokeya-hall');
 
     });

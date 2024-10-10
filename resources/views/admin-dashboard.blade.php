@@ -6,15 +6,12 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 
-    <link rel="dns-prefetch" href="//fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
-
+   
 		<link rel="stylesheet" href="./css/general.css">
-    <link rel="stylesheet" href="{{ asset('./css/footer.css') }}">
 
 
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
-    <script src="https://kit.fontawesome.com/31b429dc0a.js" crossorigin="anonymous"></script>
+ 
     
   <style>
       .notices{
@@ -76,7 +73,7 @@
       border-radius: 10px;
       background-color: #fff;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-      height: 500px;
+      height: 520px;
     }
     .teacher-card img {
       border-radius: 50%;
@@ -141,6 +138,9 @@
             </li>
             <li class="nav-item">
               <a class="nav-link" style="cursor: pointer" data-target="Teacher">Teachers</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" style="cursor: pointer" data-target="Hall">Halls</a>
             </li>
             <li class="nav-item">
               <form action="/logout" method="POST">
@@ -378,6 +378,7 @@
                           <div class="teacher-info">
                               <h4>{{ $teacher->name }}</h4>
                               <p><strong>Department:</strong> {{ $teacher->dept }}</p>
+                              <p><strong>Roll:</strong> {{ $teacher->teacher_roll }}</p>
                               <p><strong>Phone:</strong> {{ $teacher->phone }}</p>
                               <p><strong>Email:</strong> {{ $teacher->email }}</p>
                               <p><strong>Fax:</strong> {{ $teacher->fax }}</p>
@@ -393,6 +394,36 @@
       </div>
   </div>
   
+  <div class="section d-none" id="Hall">
+    <div class="container">
+        <h2 class="text-center display-5" style="color: #006400;">All Halls</h2>
+        <div class="d-flex justify-content-center mt-4">
+          <a class="btn btn-outline-success" href="{{route('add-new-hall-page')}}">Add New Hall</a>
+        </div>
+      
+        <div class="row mt-4">
+            @foreach($halls as $hall)
+                <div class="col-md-3 col-sm-12">
+                    <div class="teacher-card d-flex flex-column justify-content-between">
+                        <div class="d-flex justify-content-center">             
+                            <img src="assets/images/halls/{{$hall->image_path}}" alt="Hall">
+                        </div>
+                        <div class="teacher-info">
+                            <h4>{{ $hall->hall_name }}</h4>
+                            <p><strong>Provost:</strong> {{ $hall->provost->name ?? 'N/A'  }}</p>
+                            <p><strong>Assistant Provost:</strong> {{ $hall->assistantProvost1->name ?? 'N/A'  }}</p>
+                            <p><strong>Assistant Provost:</strong> {{ $hall->assistantProvost2->name ?? 'N/A' }}</p>
+
+                        </div>
+                        <div class="d-flex justify-content-around">
+                          <a href="{{ route('update-hall-page', ['hall' => $hall->id]) }}" class="btn btn-outline-success">Update</a>          
+                        </div>
+                    </div>
+                </div>
+            @endforeach
+        </div>
+    </div>
+</div>
     
 
   </div>

@@ -6,8 +6,6 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 
-    <link rel="dns-prefetch" href="//fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
 
 		<link rel="stylesheet" href="./css/general.css">
     <link rel="stylesheet" href="{{ asset('./css/footer.css') }}">
@@ -38,7 +36,7 @@
     </style>
 
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
-    <script src="https://kit.fontawesome.com/31b429dc0a.js" crossorigin="anonymous"></script>
+
   
 </head>
 <body>
@@ -48,11 +46,12 @@
 	  </header>
     
     <div class="container my-4">
-      <h1 class="text-center mb-4" style="color: #006400">University Hall</h1>
-    
+      <h1 class="text-center mb-4" style="color: #006400">{{$hall->hall_name}}</h1>
+     
       <div class="row">
         <div class="col-md-8">
-          <img src="{{asset('./assets/images/halls/FAZLUL.png')}}" class="hall-picture border border-success border-2 rounded" alt="University Hall">
+          
+          <img src="{{ asset('assets/images/halls/' . $hall->image_path) }}" class="hall-picture border border-success border-2 rounded" alt="University Hall">
           <p>
             Fazlul Haque Hall is the most oldest and historical hall of Khulna University of Engineering and Technology. The name goes after the famous patriot Sher-e-Bangla A.K Fazlul Haque. The residential life of this hall offers a wide variety of services designed to support students in their academic and personal success.<br>
 
@@ -60,36 +59,36 @@
 
             The hall has also got a common room where students can play many indoor games such as table tennis, chess, carom etc. Besides, indoor games competition on various events is also held in every year which imparts entertainment and refreshment among the students. There is also an arrangement for the students to participate in outdoor games. Last year the hall won a fair play trophy in football tournament showing adequate performance. A beautiful garden with numerous types of flowers resides in front of the hall. Students of this hall are very much enthusiastic and energetic.
           </p>
-          <!-- Add your 200 words text here -->
+         
         </div>
         <div class="col-md-4">
           <div class="provost-info">
             <div class="card c-card border border-success border-2">
-              <img src="{{asset('./assets/images/teachers/md_elias_uddin.jpg')}}" class="card-img-top" alt="Provost">
+              <img src="{{ asset('assets/images/teachers/' . $hall->provost->image_path) }}" class="card-img-top" alt="Provost">
               <div class="card-body">
-                <h5 class="card-title"  style="color: #006400">Dr. Md. Elias Uddin</h5>
+                <h5 class="card-title"  style="color: #006400">{{$hall->provost->name}}</h5>
                 <p class="card-text">Provost(In Charge)</p>
-                <p class="card-text">Phone: 123-456-7890</p>
-                <p class="card-text">elias@le.kuet.ac.bd, elias.acct.du@gmail.com</p>
+                <p class="card-text">Phone: {{$hall->provost->phone}}</p>
+                <p class="card-text">Email: {{$hall->provost->email }}</p>
 
               </div>
             </div>
             <div class="card c-card mt-3 border border-success border-2">
-              <img src="{{asset('./assets/images/teachers/md_elias_uddin.jpg')}}" class="card-img-top" alt="Assistant Provost">
+              <img src="{{ asset('assets/images/teachers/' . $hall->assistantProvost1->image_path) }}" class="card-img-top" alt="Assistant Provost">
               <div class="card-body ">
-                <h5 class="card-title" style="color: #006400">Dr. Md. Elias Uddin</h5>
+                <h5 class="card-title" style="color: #006400">{{$hall->assistantProvost1->name}}</h5>
                 <p class="card-text">Assistant Provost</p>
-                <p class="card-text">Phone: 8427</p>
-                <p class="card-text">elias@le.kuet.ac.bd, elias.acct.du@gmail.com</p>
+                <p class="card-text">Phone: {{$hall->assistantProvost1->phone}}</p>
+                <p class="card-text">Email: {{$hall->assistantProvost1->email}}</p>
               </div>
             </div>
             <div class="card c-card mt-3 border border-success border-2">
-              <img src="{{asset('./assets/images/teachers/Ayan_Saha.jpg')}}" class="card-img-top" alt="Assistant Provost">
+              <img src="{{ asset('assets/images/teachers/' . $hall->assistantProvost2->image_path) }}" class="card-img-top" alt="Assistant Provost">
               <div class="card-body">
-                <h5 class="card-title"  style="color: #006400">Ayan Saha</h5>
+                <h5 class="card-title"  style="color: #006400">{{$hall->assistantProvost2->name}}</h5>
                 <p class="card-text">Assistant Provost</p>
-                <p class="card-text">Phone: 8266</p>
-                <p class="card-text">Email: ayansaha@becm.kuet.ac.bd</p>
+                <p class="card-text">Phone: {{$hall->assistantProvost2->phone}}</p>
+                <p class="card-text">Email: {{$hall->assistantProvost2->email}}</p>
               </div>
             </div>
           </div>

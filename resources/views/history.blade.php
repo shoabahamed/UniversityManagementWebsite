@@ -6,9 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 
-    <link rel="dns-prefetch" href="//fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
-
+ 
 		<link rel="stylesheet" href="./css/general.css">
     <link rel="stylesheet" href="{{ asset('./css/footer.css') }}">
 
@@ -33,7 +31,7 @@
   </style>
 
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
-    <script src="https://kit.fontawesome.com/31b429dc0a.js" crossorigin="anonymous"></script>
+
   
 </head>
 <body>

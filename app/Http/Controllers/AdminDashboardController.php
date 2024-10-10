@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Event;
 use App\Models\Course;
+use App\Models\Hall;
 use App\Models\Notice;
 use App\Models\Teacher;
 use App\Models\UserDetail;
@@ -31,14 +32,82 @@ class AdminDashboardController extends Controller
         $teachers = $teachersQuery->latest()->take(10)->get();
     
         $selectedSection = $request->selected_section ?? 'Notice';
+
+        $halls = Hall::with(['provost', 'assistantProvost1', 'assistantProvost2'])->get();
     
         return view('admin-dashboard', ["notices"=> $notices,
                  "teachers" => $teachers,
                  "selectedSection" => $selectedSection,
-                 'events' => $events]);
+                 'events' => $events,
+                 'halls' => $halls]);
     }
     
     
+    public function addNewHallPage(){
+        return view('add-new-hall-page');
+    }
+
+    public function addNewHall(Request $request){
+        $request->validate([
+            'hall_name' => 'required|string|max:255',
+            'image_path' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048', // Validate image
+            'provost_roll' => 'required|integer|exists:teachers,teacher_roll',
+            'assistant_provost_roll' => 'required|integer|exists:teachers,teacher_roll',
+            'assistant_provost_roll_2' => 'required|integer|exists:teachers,teacher_roll',
+        ]);
+
+        // Handle image upload
+        if ($request->hasFile('image_path')) {
+            $image = $request->file('image_path');
+            $imageName = time().'_'.$image->getClientOriginalName(); 
+            $image->move(public_path('assets/images/halls'), $imageName);
+        } else {
+            $imageName = '';
+        }
+
+        
+        $hall = new Hall();
+        $hall->hall_name = $request->input('hall_name');
+        $hall->image_path = $imageName;
+        $hall->provost_roll = $request->input('provost_roll');
+        $hall->assistant_provost_roll = $request->input('assistant_provost_roll');
+        $hall->assistant_provost_roll_2 = $request->input('assistant_provost_roll_2');
+        $hall->save();
+
+       
+        return redirect('/admin-dashboard?selected_section=Hall')->with('success', 'Hall added successfully.');
+    }
+
+    public function updateHallPage(Hall $hall)
+    {
+        return view('update-hall-page', ['hall' => $hall]);
+    }
+
+    public function updateHall(Request $request, Hall $hall){
+        $request->validate([
+            'hall_name' => 'required|string|max:255',
+            'image_path' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048', // Validate image
+            'provost_roll' => 'required|integer|exists:teachers,teacher_roll',
+            'assistant_provost_roll' => 'required|integer|exists:teachers,teacher_roll',
+            'assistant_provost_roll_2' => 'required|integer|exists:teachers,teacher_roll',
+        ]);
+    
+        $imageName = $hall->image_path;
+        if ($request->hasFile('image_path')) {
+            $image = $request->file('image_path');
+            $imageName = time().'_'.$image->getClientOriginalName(); // Generating unique image name
+            $image->move(public_path('assets/images/halls'), $imageName);
+        }
+    
+        $hall->hall_name = $request->input('hall_name');
+        $hall->provost_roll = $request->input('provost_roll');
+        $hall->image_path = $imageName;
+        $hall->assistant_provost_roll = $request->input('assistant_provost_roll');
+        $hall->assistant_provost_roll_2 = $request->input('assistant_provost_roll_2');
+        $hall->save();
+    
+        return redirect('/admin-dashboard?selected_section=Hall')->with('success', 'Hall updated successfully.');
+    }
     
 
     public function addNewNoticePage(){
@@ -183,6 +252,7 @@ class AdminDashboardController extends Controller
         $request->validate([
             'name' => 'required',
             'email' => 'required|email',
+            "teacher_roll" => 'required',
             'dept' => "required",
             'image_path' => 'required|image|mimes:jpeg,png,jpg,gif',
             'phone' => 'required',
@@ -203,6 +273,7 @@ class AdminDashboardController extends Controller
 
         $teacher = new Teacher();
         $teacher->name = $request->input('name');
+        $teacher->teacher_roll = $request->input('teacher_roll');
         $teacher->dept = $request->input('dept');
         $teacher->image_path = $imageName;
 
@@ -212,9 +283,11 @@ class AdminDashboardController extends Controller
             $currentDean = Teacher::where('is_dean', 1)
                                     ->where('dean_faculty', $chosenFaculty)
                                     ->first();
-            $currentDean->is_dean = 0;
-            $currentDean->dean_faculty = NULL;
-            $currentDean->save();
+            if($currentDean != Null){
+                $currentDean->is_dean = 0;
+                $currentDean->dean_faculty = NULL;
+                $currentDean->save();    
+            }
 
         } 
 
@@ -224,9 +297,12 @@ class AdminDashboardController extends Controller
             $currentHead = Teacher::where('is_head', 1)
                                     ->where('head_department', $chosenDepartment)
                                     ->first();
-            $currentHead->is_head = 0;
-            $currentHead->head_department = NULL;
-            $currentHead->save();
+            if($currentHead != null){
+                $currentHead->is_head = 0;
+                $currentHead->head_department = NULL;
+                $currentHead->save();
+            }
+
 
         } 
 
@@ -253,6 +329,7 @@ class AdminDashboardController extends Controller
             'name' => 'required',
             'email' => 'required|email',
             'dept' => "required",
+            "teacher_roll" => 'required',
             'image_path' => 'image|mimes:jpeg,png,jpg,gif',
             'phone' => 'required',
             'fax' => 'required',
@@ -270,6 +347,7 @@ class AdminDashboardController extends Controller
         $teacher->name = $request->input('name');
         $teacher->dept = $request->input('dept');
         $teacher->image_path = $imageName;
+        $teacher->teacher_roll = $request->input('teacher_roll');
         $teacher->role = $request->input('role');
         $teacher->email = $request->input('email');
         $teacher->phone = $request->input('phone');

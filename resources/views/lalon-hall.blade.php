@@ -6,8 +6,6 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 
-    <link rel="dns-prefetch" href="//fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
 
 		<link rel="stylesheet" href="./css/general.css">
     <link rel="stylesheet" href="{{ asset('./css/footer.css') }}">
@@ -38,7 +36,7 @@
     </style>
 
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
-    <script src="https://kit.fontawesome.com/31b429dc0a.js" crossorigin="anonymous"></script>
+
   
 </head>
 <body>
@@ -48,50 +46,47 @@
 	  </header>
     
     <div class="container my-4">
-      <h1 class="text-center mb-4" style="color: #006400">University Hall</h1>
-    
+      <h1 class="text-center mb-4" style="color: #006400">{{$hall->hall_name}}</h1>
+     
       <div class="row">
         <div class="col-md-8">
-          <img src="{{asset('./assets/images/halls/lalon.jpg')}}" class="hall-picture border border-success border-2 rounded" alt="University Hall">
+          
+          <img src="{{ asset('assets/images/halls/' . $hall->image_path) }}" class="hall-picture border border-success border-2 rounded" alt="University Hall">
           <p>
             Lalan Shah Hall is one of the oldest residential halls of Khulna University of Engineering & Technology (KUET), Khulna. The hall is an emblem of quality engineering education and contributing not only our nation but also worldwide human beings since 1967. It is founded in 1975 after the name of famous Bengali Baul devotee - Fakir Lalan Shah. The hall is extenuating the demand of a good number of residential students. Every year the nation is being provided quality engineers from this hall. It is situated in the green environment of KUET campus beside the central mosque and the new academic building.180 undergraduate students from various departments reside in the hall. Besides around 180 students are attached to this hall.
-
-            <br>
-            There is a large dining room inside the hall and all the students of the hall take their lunch and supper smoothly in this dining room. There are forty one (41) residential rooms, one guest room, and a library cum study room in this hall. There are 1857 books in the hall library and some of those books are written by foreign writers. The study room is kept open till 11:30 pm on weekdays and general students can study without any disturbance. Also a common room of this hall is providing the facilities for watching television and playing indoor games.<br>
-            
+            There is a large dining room inside the hall and all the students of the hall take their lunch and supper smoothly in this dining room. There are forty one (41) residential rooms, one guest room, and a library cum study room in this hall. There are 1857 books in the hall library and some of those books are written by foreign writers. The study room is kept open till 11:30 pm on weekdays and general students can study without any disturbance. Also a common room of this hall is providing the facilities for watching television and playing indoor games.
             There is a strong "Hall Committee" with dedicated students to manage the various activities of the hall voluntarily. The administrative works of the hall are carried out by a Provost and two Assistant Provosts appointed by the authority of KUET. A caretaker cum hall assistant works for the sake of student affairs and maintains the accounts of the hall. There are a beautiful garden and large playground inside the hall territory. We hope that Lalan Shah Hall will help to make a great nation.
-            
           </p>
-          
+         
         </div>
         <div class="col-md-4">
           <div class="provost-info">
-            <div class="card c-card">
-              <img src="{{asset('./assets/images/teachers/md_elias_uddin.jpg')}}" class="card-img-top" alt="Provost">
+            <div class="card c-card border border-success border-2">
+              <img src="{{ asset('assets/images/teachers/' . $hall->provost->image_path) }}" class="card-img-top" alt="Provost">
               <div class="card-body">
-                <h5 class="card-title"  style="color: #006400">Dr. Md. Elias Uddin</h5>
+                <h5 class="card-title"  style="color: #006400">{{$hall->provost->name}}</h5>
                 <p class="card-text">Provost(In Charge)</p>
-                <p class="card-text">Phone: 123-456-7890</p>
-                <p class="card-text">elias@le.kuet.ac.bd, elias.acct.du@gmail.com</p>
+                <p class="card-text">Phone: {{$hall->provost->phone}}</p>
+                <p class="card-text">Email: {{$hall->provost->email }}</p>
 
               </div>
             </div>
-            <div class="card c-card mt-3">
-              <img src="{{asset('./assets/images/teachers/md_elias_uddin.jpg')}}" class="card-img-top" alt="Assistant Provost">
-              <div class="card-body">
-                <h5 class="card-title" style="color: #006400">Dr. Md. Elias Uddin</h5>
+            <div class="card c-card mt-3 border border-success border-2">
+              <img src="{{ asset('assets/images/teachers/' . $hall->assistantProvost1->image_path) }}" class="card-img-top" alt="Assistant Provost">
+              <div class="card-body ">
+                <h5 class="card-title" style="color: #006400">{{$hall->assistantProvost1->name}}</h5>
                 <p class="card-text">Assistant Provost</p>
-                <p class="card-text">Phone: 8427</p>
-                <p class="card-text">elias@le.kuet.ac.bd, elias.acct.du@gmail.com</p>
+                <p class="card-text">Phone: {{$hall->assistantProvost1->phone}}</p>
+                <p class="card-text">Email: {{$hall->assistantProvost1->email}}</p>
               </div>
             </div>
-            <div class="card c-card mt-3">
-              <img src="{{asset('./assets/images/teachers/Ayan_Saha.jpg')}}" class="card-img-top" alt="Assistant Provost">
+            <div class="card c-card mt-3 border border-success border-2">
+              <img src="{{ asset('assets/images/teachers/' . $hall->assistantProvost2->image_path) }}" class="card-img-top" alt="Assistant Provost">
               <div class="card-body">
-                <h5 class="card-title"  style="color: #006400">Ayan Saha</h5>
+                <h5 class="card-title"  style="color: #006400">{{$hall->assistantProvost2->name}}</h5>
                 <p class="card-text">Assistant Provost</p>
-                <p class="card-text">Phone: 8266</p>
-                <p class="card-text">Email: ayansaha@becm.kuet.ac.bd</p>
+                <p class="card-text">Phone: {{$hall->assistantProvost2->phone}}</p>
+                <p class="card-text">Email: {{$hall->assistantProvost2->email}}</p>
               </div>
             </div>
           </div>

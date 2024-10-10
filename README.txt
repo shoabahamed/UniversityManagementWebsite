@@ -4,7 +4,6 @@ The University Management System is a dynamic web application developed for my C
 
 This system allows users to log in and access functionalities based on their roles as either admin or student. The primary goal of this project is to streamline administrative tasks and improve communication within the university community, ensuring that both students and faculty can easily manage their responsibilities.
 
-Here is a short demo video of the website
 
 # Features
 1. **<u>User Authentication:</u>** Users can log in with their credentials, ensuring secure access to the application.
@@ -18,6 +17,7 @@ Here is a short demo video of the website
     * **Student Features:**
         * Information Update: Students can update their personal information, ensuring that their details are current.
         * Course Selection: Students can browse and select courses they wish to attend, enhancing their academic experience.
+3. **<u>Dynamic Data Loading:</u>** Information from database is displayed based on the changes made
 
 
 # Tools Used

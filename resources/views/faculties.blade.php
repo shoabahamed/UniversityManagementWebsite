@@ -6,8 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 
-    <link rel="dns-prefetch" href="//fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
+
 		<link rel="stylesheet" href="./css/general.css">
     <link rel="stylesheet" href="./css/faculties.css">
 		<link rel="stylesheet" href="./css/footer.css">
