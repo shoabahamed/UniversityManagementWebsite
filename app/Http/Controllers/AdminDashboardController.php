@@ -359,9 +359,12 @@ class AdminDashboardController extends Controller
             $currentDean = Teacher::where('is_dean', 1)
                                     ->where('dean_faculty', $chosenFaculty)
                                     ->first();
-            $currentDean->is_dean = 0;
-            $currentDean->dean_faculty = NULL;
-            $currentDean->save();
+                                    
+            if($currentDean){
+                $currentDean->is_dean = 0;
+                $currentDean->dean_faculty = NULL;
+                $currentDean->save();
+            }
 
         } 
 
@@ -371,9 +374,12 @@ class AdminDashboardController extends Controller
             $currentHead = Teacher::where('is_head', 1)
                                     ->where('head_department', $chosenDepartment)
                                     ->first();
-            $currentHead->is_head = 0;
-            $currentHead->head_department = NULL;
-            $currentHead->save();
+
+            if($currentHead){
+                $currentHead->is_head = 0;
+                $currentHead->head_department = NULL;
+                $currentHead->save();    
+            }
 
         } 
 

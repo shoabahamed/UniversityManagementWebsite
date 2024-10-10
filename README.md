@@ -4,6 +4,7 @@ The University Management System is a dynamic web application developed for my C
 
 This system allows users to log in and access functionalities based on their roles as either admin or student. The primary goal of this project is to streamline administrative tasks and improve communication within the university community, ensuring that both students and faculty can easily manage their responsibilities.
 
+[Watch Project Demo Vidoe on Youtube](https://youtu.be/IlTU8NBjhkI)
 
 # Features
 1. **<u>User Authentication:</u>** Users can log in with their credentials, ensuring secure access to the application.
@@ -12,7 +13,7 @@ This system allows users to log in and access functionalities based on their rol
         * Notice Management: Admins can create, update, and delete notices to keep students informed.
         * Event Management: Admins can add and manage events happening within the university.
         * Course Management: Admins can add, update, and delete courses for different departments, as well as assign teachers to these courses.
-        * Faculty Management: Admins have the ability to add and update information about faculty members, including roles such as head, dean, and vice-chancellor.
+        * Faculty Management: Admins have the ability to add and update information about faculty members, add new members, change roles such as head, dean
         * Hall Management: Admins can add details about university halls, including descriptions and images.
     * **Student Features:**
         * Information Update: Students can update their personal information, ensuring that their details are current.
