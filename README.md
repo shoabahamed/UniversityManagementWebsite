@@ -69,7 +69,7 @@ This system allows users to log in and access functionalities based on their rol
     <td align="center">
       <img src="./public/assets/images/extras/courses.png" width="90%" />
       <br/>
-      <em>Figure 5: Courses Taken</em>
+      <em>Figure 8: Courses Taken</em>
     </td>
   </tr>
 </table>
